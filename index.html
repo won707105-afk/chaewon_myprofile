@@ -1,1 +1,233 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a0d">
+  <title>박채원 | 포트폴리오</title>
+
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Pretendard", sans-serif;
+      background: #080a0d;
+      color: #ffffff;
+    }
+
+    /* 표지 전체 */
+    .cover {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 60px 24px;
+      background-image: url("./sports-analysis-bg.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    /* 사진 위 어두운 오버레이 */
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.58) 48%,
+          rgba(0, 0, 0, 0.42) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.10) 55%,
+          rgba(0, 0, 0, 0.40) 100%
+        );
+    }
+
+    /* 콘텐츠 */
+    .cover-content {
+      width: 100%;
+      max-width: 1250px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      margin-bottom: 66px;
+      color: #f5f5f5;
+    }
+
+    .intro {
+      font-size: clamp(18px, 2.2vw, 30px);
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: 0.12em;
+      word-break: keep-all;
+      margin-bottom: 24px;
+    }
+
+    .accent {
+      color: #facc15;
+      font-weight: 700;
+    }
+
+    .name {
+      font-family: Impact, "Arial Narrow", sans-serif;
+      font-size: clamp(54px, 10.2vw, 142px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      text-shadow: 0 5px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .name span {
+      display: inline-block;
+    }
+
+    .tagline {
+      margin-top: 38px;
+      font-size: clamp(17px, 2vw, 27px);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      line-height: 1.9;
+      word-break: keep-all;
+    }
+
+    .bottom-label {
+      margin-top: 105px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .bottom-label .dot {
+      color: #facc15;
+      padding: 0 8px;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 600px) {
+      .cover {
+        padding: 45px 22px;
+        background-position: 58% center;
+      }
+
+      .cover::before {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.78),
+            rgba(0, 0, 0, 0.52)
+          ),
+          linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.65),
+            transparent 70%
+          );
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        margin-bottom: 58px;
+        letter-spacing: 0.3em;
+      }
+
+      .intro {
+        font-size: 17px;
+        letter-spacing: 0.04em;
+        line-height: 2;
+      }
+
+      .name {
+        font-size: clamp(42px, 11vw, 68px);
+        letter-spacing: -0.04em;
+      }
+
+      .tagline {
+        margin-top: 30px;
+        font-size: 16px;
+        letter-spacing: 0.03em;
+      }
+
+      .bottom-label {
+        margin-top: 75px;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .name {
+        font-size: 38px;
+      }
+
+      .intro,
+      .tagline {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="cover">
+    <section class="cover-content">
+
+      <p class="eyebrow">PORTFOLIO</p>
+
+      <p class="intro">
+        스포츠 현장의 물음표를
+        <span class="accent">데이터</span>로 풀고,
+      </p>
+
+      <h1 class="name">
+        <span>PARK CHAE WON</span>
+      </h1>
+
+      <p class="tagline">
+        <span class="accent">기술</span>로 느낌표를 만드는
+        <span class="accent">과몰입러</span>
+      </p>
+
+      <p class="bottom-label">
+        SPORTS <span class="dot">·</span>
+        DATA <span class="dot">·</span>
+        TECHNOLOGY
+      </p>
+
+    </section>
+  </main>
+</body>
+</html>
+
