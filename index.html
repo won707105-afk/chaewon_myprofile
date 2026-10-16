@@ -231,3 +231,725 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK × FC SEOUL Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* TYPOGRAPHY */
+        .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        
+        .text-red { color: #E61C24; }
+        .text-ivory { color: #F4E8C1; }
+        .text-gray { color: #A0A0A0; }
+
+        /* SLIDE CONTAINER */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 16:9 RATIO WRAPPER FOR PPT LOOK */
+        .slide-content {
+            width: 100%;
+            max-width: 1920px;
+            height: 100%;
+            max-height: 1080px;
+            padding: 50px 70px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* NAVIGATION BUTTONS */
+        .nav-control {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(15, 15, 15, 0.85);
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #E61C24;
+            border-color: #E61C24;
+        }
+
+        .page-indicator {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: #F4E8C1;
+        }
+
+        /* DECORATIVE ELEMENTS */
+        .line-accent {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .line-red {
+            height: 3px;
+            background: #E61C24;
+            width: 60px;
+            display: inline-block;
+        }
+
+        /* PAGE 1 STYLES */
+        .page1-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.75) 100%), url('스파크1.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .page1-container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 88px;
+            line-height: 0.95;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .header-sub {
+            font-size: 20px;
+            font-weight: 300;
+            color: #F4E8C1;
+            margin-bottom: 35px;
+            word-break: keep-all;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .info-table td {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 15px;
+            vertical-align: top;
+        }
+
+        .info-table td.label {
+            width: 130px;
+            font-family: 'Oswald', sans-serif;
+            color: #E61C24;
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .info-table td.val {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* ASYMMETRIC PHOTO GRID */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            height: 680px;
+            gap: 15px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            background-color: #151515;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(15%) contrast(105%);
+            transition: filter 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        .photo-1 { grid-column: 1 / 8; grid-row: 1 / 8; }
+        .photo-2 { grid-column: 8 / 13; grid-row: 1 / 6; }
+        .photo-3 { grid-column: 1 / 6; grid-row: 8 / 13; }
+        .photo-4 { grid-column: 6 / 13; grid-row: 6 / 13; }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 12px;
+            font-size: 11px;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.7);
+            padding: 3px 8px;
+            color: #F4E8C1;
+        }
+
+        /* PAGE 2 STYLES */
+        .page2-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #E61C24;
+            padding-bottom: 15px;
+        }
+
+        .page2-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 52px;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .page2-subtitle {
+            font-size: 14px;
+            color: #A0A0A0;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .page2-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            height: calc(100% - 100px);
+        }
+
+        .section-box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sec-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            color: #F4E8C1;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sec-header::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: #E61C24;
+        }
+
+        /* STRATEGY FLOWCHART */
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .flow-step {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-num {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #E61C24;
+            font-size: 18px;
+        }
+
+        .flow-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 4px 0;
+            color: #ffffff;
+        }
+
+        .flow-desc {
+            font-size: 11px;
+            color: #a0a0a0;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+
+        /* MY CONTRIBUTION GRID */
+        .contrib-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .contrib-item {
+            border-left: 2px solid #E61C24;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 14px;
+        }
+
+        .contrib-item h4 {
+            font-size: 14px;
+            color: #F4E8C1;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .contrib-item p {
+            font-size: 12px;
+            color: #b0b0b0;
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        /* DATA KPI CARDS */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .kpi-card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 15px 12px;
+            text-align: center;
+        }
+
+        .kpi-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            color: #F4E8C1;
+            line-height: 1;
+        }
+
+        .kpi-num.highlight {
+            color: #E61C24;
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-top: 6px;
+        }
+
+        .kpi-sub {
+            font-size: 10px;
+            color: #888888;
+            margin-top: 2px;
+        }
+
+        .data-source-note {
+            font-size: 10.5px;
+            color: #777;
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        /* INSIGHT LIST */
+        .insight-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .insight-list li {
+            position: relative;
+            padding-left: 16px;
+            font-size: 12.5px;
+            color: #d0d0d0;
+            margin-bottom: 8px;
+            line-height: 1.45;
+            word-break: keep-all;
+        }
+
+        .insight-list li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #E61C24;
+            font-size: 8px;
+        }
+
+        /* PRINT STYLES FOR PDF CONVERSION */
+        @media print {
+            body {
+                overflow: visible;
+                background: #050505;
+            }
+
+            .nav-control {
+                display: none !important;
+            }
+
+            .slide-container {
+                display: block;
+                transform: none !important;
+            }
+
+            .slide {
+                width: 100vw;
+                height: 100vh;
+                page-break-after: always;
+                break-after: page;
+                position: relative;
+            }
+
+            .slide-content {
+                max-width: none;
+                max-height: none;
+                padding: 40px 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container" id="slideContainer">
+        
+        <!-- PAGE 1: PROJECT OVERVIEW -->
+        <section class="slide" id="slide1">
+            <div class="page1-bg"></div>
+            <div class="slide-content">
+                <div class="page1-container">
+                    
+                    <!-- LEFT COLUMN: TITLE & OVERVIEW -->
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <span class="line-red"></span>
+                            <span style="font-family: 'Oswald', sans-serif; letter-spacing: 3px; font-size: 14px; color: #A0A0A0; margin-left: 10px;">PORTFOLIO 01</span>
+                        </div>
+                        
+                        <h1 class="header-title">
+                            SPARK <span class="text-red">×</span><br>FC SEOUL
+                        </h1>
+                        <p class="header-sub">
+                            스포츠 팬덤을 이해하고, 새로운 관중의 유입을 설계하다.
+                        </p>
+
+                        <div class="line-accent"></div>
+
+                        <table class="info-table">
+                            <tr>
+                                <td class="label">PURPOSE</td>
+                                <td class="val">FC서울 홈경기에 대한 2030세대의 관심 증대 및 대학생·외국인 신규 관중 유입 전략 기획</td>
+                            </tr>
+                            <tr>
+                                <td class="label">PROJECT TYPE</td>
+                                <td class="val">스포츠 마케팅 · 콘텐츠 기획 · 관중 유입 전략 캠페인</td>
+                            </tr>
+                            <tr>
+                                <td class="label">PERIOD</td>
+                                <td class="val">2026년 9월 ~ 2026년 11월</td>
+                            </tr>
+                            <tr>
+                                <td class="label">KEY ACTIVITIES</td>
+                                <td class="val">
+                                    • 대학생 관중 모객 캠페인 (2026.09.05 인천전)<br>
+                                    • 신규 관중 유입 전략 경쟁 PT (2026.10.02 발표)<br>
+                                    • 추가 관중 모객 활동 (2026.11.08)
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- RIGHT COLUMN: ASYMMETRIC PHOTO GRID -->
+                    <div class="photo-grid">
+                        <div class="photo-item photo-1">
+                            <img src="스파크6.jpg" alt="FC서울 응원 현장 (SPARK 6)" onerror="this.src='https://via.placeholder.com/600x400/1a1a1a/ffffff?text=SPARK+6'">
+                            <div class="photo-caption">MATCH DAY ATMOSPHERE</div>
+                        </div>
+                        <div class="photo-item photo-2">
+                            <img src="스파크2.jpg" alt="서울월드컵경기장 (SPARK 2)" onerror="this.src='https://via.placeholder.com/400x300/1a1a1a/ffffff?text=SPARK+2'">
+                            <div class="photo-caption">SEOUL WORLD CUP STADIUM</div>
+                        </div>
+                        <div class="photo-item photo-3">
+                            <img src="스파크4.jpg" alt="SPARK 이벤트 안내 (SPARK 4)" onerror="this.src='https://via.placeholder.com/300x300/1a1a1a/ffffff?text=SPARK+4'">
+                            <div class="photo-caption">PROMOTION CONTENT</div>
+                        </div>
+                        <div class="photo-item photo-4">
+                            <img src="스파크1.jpg" alt="FC서울 팬덤 (SPARK 1)" onerror="this.src='https://via.placeholder.com/500x300/1a1a1a/ffffff?text=SPARK+1'">
+                            <div class="photo-caption">FC SEOUL FANDOM</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: GLOBAL DAY STRATEGY & MY CONTRIBUTION -->
+        <section class="slide" id="slide2">
+            <div class="slide-content">
+                
+                <!-- HEADER -->
+                <div class="page2-header">
+                    <div>
+                        <h2 class="page2-title">GLOBAL DAY STRATEGY <span class="text-red">&</span> MY CONTRIBUTION</h2>
+                    </div>
+                    <div class="page2-subtitle">
+                        SPARK × FC SEOUL CAMPUS LAB
+                    </div>
+                </div>
+
+                <!-- MAIN GRID -->
+                <div class="page2-grid">
+                    
+                    <!-- LEFT COLUMN: STRATEGY & CONTRIBUTION -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- A. GLOBAL DAY STRATEGY -->
+                        <div class="section-box" style="flex: 1.2;">
+                            <div class="sec-header">A. GLOBAL DAY STRATEGY (제안 전략)</div>
+                            <p style="font-size: 13px; color: #F4E8C1; font-weight: 600; margin-bottom: 8px;">
+                                “서울에 있는 외국인 유학생을 FC서울의 관중으로.”
+                            </p>
+                            <p style="font-size: 12px; color: #aaaaaa; margin-bottom: 12px; line-height: 1.4;">
+                                서울 내 외국인 유학생 7.5만 명을 타깃으로, '글로벌 데이' 및 외국인 500명 참여 규모의 'FC서울 런' 패키지 기획안을 경쟁 PT에서 제안함.
+                            </p>
+
+                            <!-- PROCESS FLOWCHART -->
+                            <div class="flow-container">
+                                <div class="flow-step">
+                                    <div class="flow-num">STEP 01</div>
+                                    <div class="flow-title">타깃 설정</div>
+                                    <div class="flow-desc">서울 거주 외국인 유학생 (7.5만)</div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-num">STEP 02</div>
+                                    <div class="flow-title">모집 플랫폼</div>
+                                    <div class="flow-desc">대학 국제처/어학당 네트워크 및 QR</div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-num">STEP 03</div>
+                                    <div class="flow-title">경험 제공</div>
+                                    <div class="flow-desc">글로벌 데이 & FC서울 런 패키지</div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-num">STEP 04</div>
+                                    <div class="flow-title">재방문 유도</div>
+                                    <div class="flow-desc">인증 시 다음 경기 10% 할인 혜택</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- B. MY CONTRIBUTION -->
+                        <div class="section-box" style="flex: 1.1;">
+                            <div class="sec-header">B. MY CONTRIBUTION (담당 실무)</div>
+                            <div class="contrib-grid">
+                                <div class="contrib-item">
+                                    <h4>01. QR 설문지 제작</h4>
+                                    <p>외국인 타깃의 관람 및 참여 의향 데이터 수집을 위한 다국어/영어 QR 설문지 기획 및 설계</p>
+                                </div>
+                                <div class="contrib-item">
+                                    <h4>02. 예산 자료 조사</h4>
+                                    <p>FC서울 런(4,050만 원) 및 연간 3회 글로벌 데이 운영 예산(4,538만 원) 및 재원 구조 산출</p>
+                                </div>
+                                <div class="contrib-item">
+                                    <h4>03. 4P & 전략 기획</h4>
+                                    <p>서울시 연계 사업(1타 3피) 분석, 유학생 페르소나 설정 및 경쟁 PT 제안서 완성 참여</p>
+                                </div>
+                                <div class="contrib-item">
+                                    <h4>04. 실전 모객 실행</h4>
+                                    <p>9/5 인천전 대학생 모집 Google Form 제작, 신청자 관리 및 경기장 현장 운영 지원</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN: DATA & INSIGHTS -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <!-- C. PROJECT DATA -->
+                        <div class="section-box" style="flex: 1.2;">
+                            <div class="sec-header">C. PROJECT DATA (실제 성과 및 제안 수치)</div>
+                            
+                            <div class="data-grid">
+                                <div class="kpi-card">
+                                    <div class="kpi-num highlight">17명</div>
+                                    <div class="kpi-label">실제 단체 관람</div>
+                                    <div class="kpi-sub">9/5 인천전 서경대 모객</div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="kpi-num">13.5만</div>
+                                    <div class="kpi-label">홍보 릴스 최고 조회</div>
+                                    <div class="kpi-sub">학과 협업 계정(감귤즈)</div>
+                                </div>
+                                <div class="kpi-card">
+                                    <div class="kpi-num">28,288명</div>
+                                    <div class="kpi-label">9/5 경기 총 관중</div>
+                                    <div class="kpi-sub">서울월드컵경기장 현장</div>
+                                </div>
+                            </div>
+
+                            <div class="data-source-note">
+                                <span style="color: #E61C24;">* 수치 구분 및 출처:</span><br>
+                                1) <b>17명</b>: 2026.09.05 인천전 구글 폼으로 모객 완료된 서경대학교 실제 관람객 수 (출처: 중간 보고서)<br>
+                                2) <b>500명</b>: 경쟁 PT에서 제안한 'FC서울 런' 및 글로벌 데이 1회차 <i>목표 참가 규모</i> (실적 그래프 미포함)<br>
+                                3) <b>13.5만 회</b>: 학과 학생 운영 계정('감귤즈') 홍보 릴스 최고 조회수 (출처: 중간 보고서)
+                            </div>
+                        </div>
+
+                        <!-- D. INSIGHTS -->
+                        <div class="section-box" style="flex: 1.1;">
+                            <div class="sec-header">D. INSIGHTS (프로젝트를 통한 배움)</div>
+                            <ul class="insight-list">
+                                <li><b>근거 중심 전략 수립:</b> 서울관광 실태조사 및 등록 외국인 통계 등 신뢰 가능한 데이터를 바탕으로 타깃을 구체화하고 설득력 있는 제안서를 구성하는 역량을 함양함.</li>
+                                <li><b>참여 유도 UX 설계:</b> Google Form 질문 체계화 및 QR 유입 경로 단순화를 통해 사용자 관점의 모객 프로세스를 경험함.</li>
+                                <li><b>팬덤 문화 및 스포츠 마케팅 이해:</b> K리그 팬덤 및 경기장 경험 요소 분석을 통해 단발성 행사가 아닌 정기적 재방문 구조의 중요성을 체득함.</li>
+                                <li><b>경쟁 PT 분석을 통한 시야 확장:</b> 타 대학의 기획안(휴면 팬 타깃, 경기장 주변 풋살장 활용 등)을 분석하며 관중 유입 전략의 다양한 접근 방식을 습득함.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- NAVIGATION UI -->
+    <div class="nav-control">
+        <button class="nav-btn" id="prevBtn">&lt;</button>
+        <span class="page-indicator" id="pageIndicator">01 / 02</span>
+        <button class="nav-btn" id="nextBtn">&gt;</button>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTION -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 2;
+        const slideContainer = document.getElementById('slideContainer');
+        const pageIndicator = document.getElementById('pageIndicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlide() {
+            slideContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            pageIndicator.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
