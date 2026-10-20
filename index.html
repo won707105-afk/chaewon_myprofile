@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<!--
+박채원 포트폴리오 | GitHub 업로드용
+[구성] index.html + assets/images/ 폴더를 같은 위치에 업로드합니다.
+[사진 교체] src="assets/images/..." 또는 CSS url("assets/images/...")를 수정합니다.
+[내용 수정] 아래 HTML 01~07 페이지 주석에서 원하는 페이지를 찾으세요.
+[디자인 수정] CSS 주석을 참고하세요. 뒤쪽 스타일이 앞쪽 규칙을 보완합니다.
+[동작 수정] 파일 아래 JavaScript 1~4에서 애니메이션과 강조 동작을 찾으세요.
+[주의] SVG 아이콘과 그래프는 코드에 포함되어 있어 별도 사진이 필요 없습니다.
+-->
+
+<html lang="ko"><head>
+<!-- 문서 기본 설정: 제목, 언어, 모바일 화면 크기 -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>박채원 | 스포츠테크 포트폴리오</title>
+<!-- CSS 01: 공통 디자인 · 표지 · 경력 · SPARK · Design Thinking 기본 스타일 -->
+<style>
+/* 공통 디자인 · 표지 · 경력 · SPARK · Design Thinking 기본 스타일
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+:root{--blue:#21659a;--orange:#f15235;--yellow:#f6d957;--muted:#616e79;--line:#d5dfe7}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:66px}body{margin:0;background:#dce5ec;color:#172a3c;font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;word-break:keep-all}a{color:inherit;text-decoration:none}button,a{touch-action:manipulation}a:focus-visible,button:focus-visible{outline:3px solid #f6d957;outline-offset:4px}.toolbar{height:58px;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 4%;position:sticky;top:0;z-index:9;border-bottom:1px solid #cbd6df;font-size:13px}.brand{font-weight:800;letter-spacing:2px;color:var(--blue)}nav{display:flex;gap:24px;align-items:center}button{font:inherit;background:var(--blue);color:white;border:0;padding:9px 15px;cursor:pointer}main{width:min(100%,calc((100svh - 74px)*16/9));max-width:1920px;margin:auto;container-type:inline-size}.page{aspect-ratio:16/9;position:relative;overflow:hidden;container-type:inline-size;margin-bottom:16px;box-shadow:0 12px 36px #18334b20}.cover{color:white;background:#152d3b}.cover-bg,.cover-shade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cover-shade{background:linear-gradient(90deg,#071a2b96,#071a2b65)}.cover-brand{position:absolute;top:6cqw;left:7cqw;font-size:1.45cqw;letter-spacing:.12em;font-weight:700;line-height:1.65}.cover-brand span{font-size:1cqw;letter-spacing:0;font-weight:400}.chevrons{position:absolute;right:5cqw;top:4cqw;font-size:4cqw;font-weight:900;letter-spacing:-.8cqw;color:#4fa0d6}.hero{position:absolute;top:19cqw;left:7cqw;right:0}.dots{font-size:1.15cqw;letter-spacing:.35cqw;margin-bottom:1.8cqw}.hero-lead{font-size:2.05cqw;line-height:1.5;margin:0 0 .6cqw}.hero-lead b{color:var(--yellow)}.hero h1{font-family:Arial,sans-serif;font-size:7.6cqw;line-height:1.22;letter-spacing:-.045em;margin:0;font-weight:800;white-space:nowrap}.hero h1 span{background:var(--orange);display:inline-block;padding:.3cqw 2.6cqw .65cqw 1.7cqw;border-radius:1.8cqw 0 0 1.8cqw;margin-left:1cqw}.hero-bottom{font-size:2cqw;margin:1.5cqw 0 0;line-height:1.5;font-weight:400}.hero-bottom strong{font-weight:600}.hero-link{position:absolute;right:0;top:27cqw;border-radius:4cqw 0 0 4cqw;background:var(--blue);padding:1.1cqw 4cqw;font-size:1.1cqw}.cover-foot{position:absolute;bottom:4cqw;left:7cqw;font-size:1cqw;letter-spacing:.2em}
+.resume{background:#f7fafc;padding:2.2cqw 3cqw 2cqw}.topline{display:flex;justify-content:space-between;font-size:.85cqw;letter-spacing:.14em;border-bottom:1px solid var(--line);padding-bottom:.75cqw;color:var(--blue)}.topline b{color:var(--orange)}.layout{display:grid;grid-template-columns:25% 1fr;gap:2.3cqw;margin-top:1.4cqw}.profile{background:var(--blue);color:white;border-radius:1.5cqw;padding:1.4cqw 1.5cqw}.portrait{float:left;width:6.5cqw;height:8cqw;object-fit:cover;object-position:center 25%;margin:0 1.1cqw .8cqw 0;border-radius:.65cqw}.profile h1{font-size:2.5cqw;letter-spacing:-.06em;margin:.5cqw 0 .5cqw}.major{font-size:1.03cqw;line-height:1.5}.intro{clear:both;font-size:1.1cqw;line-height:1.6;margin:1cqw 0}.intro strong{color:var(--yellow);font-weight:600}.mini-label{font-size:.76cqw;letter-spacing:.14em;color:#d3e9f8;margin:.8cqw 0 .2cqw}.tags{font-size:1.02cqw;line-height:1.45}.contact{margin-top:.85cqw;padding-top:.65cqw;border-top:1px solid #ffffff50;font-size:.88cqw;line-height:1.4;overflow-wrap:anywhere}.contact span{font-size:.7cqw;color:#d3e9f8;display:block;margin-top:.3cqw}.content-head{margin:0 0 1cqw}.content-head h2{font-size:2.35cqw;line-height:1.25;color:var(--blue);letter-spacing:-.055em;margin:0}.content-head p{display:none}.columns{display:grid;grid-template-columns:1.1fr 1fr;gap:2cqw}.section{margin-bottom:.85cqw}h3{font-size:1.3cqw;display:flex;align-items:center;gap:.6cqw;margin:0 0 .5cqw;color:var(--blue);line-height:1.3;padding-bottom:.4cqw;border-bottom:1px solid var(--line)}h3 small{display:grid;place-items:center;background:var(--orange);color:white;border-radius:.35cqw;min-width:2cqw;height:1.8cqw;font-size:.84cqw}.item{font-size:1.08cqw;line-height:1.4;margin-bottom:.5cqw}.item b{font-weight:600}.meta{display:block;color:var(--muted);font-size:.96cqw;line-height:1.4;margin-top:.1cqw}.grade{color:var(--blue);font-weight:700}.activity{list-style:none;padding:0;margin:0}.activity li{position:relative;padding-left:.7cqw;font-size:1.05cqw;line-height:1.4;margin-bottom:.4cqw}.activity li:before{content:"";position:absolute;left:0;top:.5em;background:var(--orange);width:.22cqw;height:.22cqw}.tool-title{font-size:.95cqw;color:var(--muted);margin:.55cqw 0 .3cqw}.tool-list{display:flex;flex-wrap:wrap;gap:.3cqw;margin-bottom:.45cqw}.tool-chip{display:inline-flex;align-items:center;gap:.3cqw;background:white;border:1px solid #d5dfe7;border-radius:.4cqw;padding:.25cqw .4cqw;font-size:1cqw;line-height:1.3;white-space:nowrap}.tool-icon{display:grid;place-items:center;width:1.5cqw;height:1.5cqw;border-radius:.25cqw;flex:none;background:var(--icon);color:var(--ink);font-family:Arial,sans-serif;font-size:.8cqw;font-weight:700}.tool-icon svg{width:80%;height:80%}.sport-list{font-size:1.03cqw;line-height:1.5}.footer{position:absolute;left:3cqw;right:3cqw;bottom:.85cqw;border-top:1px solid var(--line);padding-top:.45cqw;display:flex;justify-content:space-between;color:var(--blue);font-size:.75cqw;letter-spacing:.1em}
+@media screen and (max-width:760px){.toolbar{font-size:10px;padding:0 12px}.brand{letter-spacing:0}nav{gap:12px}button{padding:8px}main{width:100%}.resume{aspect-ratio:auto;padding:24px 20px 60px}.topline{font-size:8px;gap:12px;padding-bottom:12px}.layout{display:block;margin-top:18px}.profile{padding:20px;border-radius:16px;margin-bottom:26px}.portrait{width:90px;height:110px;margin:0 18px 15px 0;border-radius:8px}.profile h1{font-size:32px;margin:10px 0}.major{font-size:14px}.intro{font-size:15px;margin:16px 0}.mini-label{font-size:10px;margin:16px 0 5px}.tags{font-size:14px}.contact{font-size:13px;margin-top:18px;padding-top:12px}.contact span{font-size:10px;margin-top:8px}.content-head{margin-bottom:20px}.content-head h2{font-size:27px}.columns{display:block}.section{margin-bottom:25px}h3{font-size:18px;gap:10px;margin-bottom:12px;padding-bottom:9px}h3 small{width:30px;height:28px;font-size:12px;border-radius:5px}.item,.activity li{font-size:15px;margin-bottom:10px}.meta{font-size:13px;margin-top:4px}.activity li{padding-left:12px}.activity li:before{width:3px;height:3px}.tool-title{font-size:13px;margin:14px 0 7px}.tool-list{gap:6px;margin-bottom:12px}.tool-chip{font-size:13px;padding:5px 8px;gap:6px;border-radius:5px}.tool-icon{width:24px;height:24px;font-size:12px;border-radius:4px}.sport-list{font-size:14px}.footer{left:20px;right:20px;bottom:18px;font-size:9px;padding-top:10px}}
+@media print{@page{size:1920px 1080px;margin:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.toolbar,.hero-link{display:none}main{width:1920px;max-width:none}.page{width:1920px;height:1080px;margin:0;box-shadow:none;break-after:page;break-inside:avoid}.page:last-child{break-after:auto}}
+
+/* Light, cyan-accented editorial portfolio, based on the supplied career references. */
+:root{--blue:#0989cf;--orange:#0989cf;--yellow:#167fba;--muted:#647382;--line:#d9e3eb}
+body{background:#eef4f8;color:#182633}.toolbar{background:#fff}.brand{color:#14658f}button{background:#168cca}.page{box-shadow:0 10px 35px #344c6014}
+.cover{background:#f8fcff;color:#122e43}.cover:after{content:"";position:absolute;inset:2.8cqw;border:1px solid #cfe4f0;pointer-events:none}.cover-shade{background:linear-gradient(110deg,#fff 36%,#e1f3ff 100%)}
+.cover-brand{top:5cqw;left:6cqw;font-size:1.2cqw;color:#235674;z-index:1}.cover-brand span{font-size:1cqw;color:#667e8e}.chevrons{right:6cqw;top:4.3cqw;color:#35a8ee;z-index:1;font-size:3cqw;letter-spacing:-.55cqw}.hero{left:6cqw;top:15.5cqw;right:0;z-index:2}.dots{display:none}.portfolio-label{font-size:1.2cqw;letter-spacing:.35em;color:#1788c4;margin-bottom:1cqw;font-weight:600}.hero-lead{position:absolute;top:26.3cqw;left:0;font-size:1.65cqw;color:#314f63;margin:0}.hero-lead b{color:#0088d5}.hero h1{font-size:8.5cqw;line-height:.97;letter-spacing:-.065em;font-weight:800;position:relative}.hero h1 span{background:transparent;color:#139ade;padding:0;margin:0;border-radius:0;display:inline-block;text-shadow:0 0 30px #36b4fc16}.hero-bottom{margin:7.3cqw 0 0;font-size:1.65cqw;color:#314f63}.hero-bottom strong{color:#142f43}.hero-link{top:30cqw;right:6cqw;border-radius:0;background:none;border-bottom:1px solid #168dcc;color:#1477ae;padding:.65cqw 0;font-size:1cqw}.cover-foot{left:6cqw;bottom:4.6cqw;color:#47809d;font-size:.9cqw;z-index:2}
+.data-orbit{position:absolute;right:-3cqw;top:9cqw;width:36cqw;height:36cqw;border-radius:50%;border:1px solid #abdafa55;background:radial-gradient(circle,#dcf2ff88,transparent 68%);opacity:.85}.data-orbit span{position:absolute;border:1px solid #98d9ff70;inset:3cqw;border-radius:50%;transform:rotate(-25deg) scaleX(.7)}.data-orbit span:nth-child(2){transform:rotate(35deg) scaleX(.7)}.data-orbit span:nth-child(3){inset:7cqw;transform:rotate(90deg) scaleX(.7)}.data-orbit i{position:absolute;font:700 16cqw Arial;left:6cqw;top:7cqw;color:#71c9fb24;font-style:normal}.data-orbit b{position:absolute;font:700 16cqw Arial;left:19cqw;top:7cqw;color:#159fe73d}
+.resume{background:#fff;padding:2.2cqw 3.3cqw 2cqw}.topline{font-size:.8cqw;letter-spacing:.16em;color:#67808e;border:0;padding-bottom:0}.topline b{color:#168cca}.layout{grid-template-columns:23% 1fr;gap:2.6cqw;margin-top:1.1cqw}.profile{background:transparent;color:#172d3f;padding:0 1.5cqw 0 0;border-radius:0;border-right:1px solid #d9e5ed}.portrait{float:none;display:block;width:10cqw;height:12.8cqw;object-fit:cover;object-position:center 22%;border-radius:.5cqw;margin:0 0 .8cqw;box-shadow:0 3px 12px #24465a13}.profile h1{font-size:2.4cqw;color:#173b54;margin:.5cqw 0 .3cqw}.major{font-size:1.02cqw;color:#536b7b;line-height:1.5}.intro{font-size:1.06cqw;margin:.9cqw 0;line-height:1.55}.intro strong{color:#0788ce}.mini-label{color:#7190a4;font-size:.73cqw;letter-spacing:.12em;margin:.7cqw 0 .2cqw}.tags{font-size:1.02cqw;line-height:1.5}.contact{border-color:#d9e5ed;font-size:.88cqw;margin-top:.7cqw;padding-top:.3cqw}.contact span{font-size:.7cqw;color:#7190a4}.career-title{font-family:Arial,sans-serif;font-size:3.6cqw;line-height:1;color:#159edf;font-weight:800;letter-spacing:-.055em}.content-head{display:flex;align-items:baseline;gap:1.3cqw;margin-bottom:1.3cqw;padding-bottom:.9cqw;border-bottom:2px solid #1a3e54}.content-head h2{font-size:1.25cqw;color:#526d80;letter-spacing:-.04em;font-weight:500}.columns{grid-template-columns:1.12fr 1fr;gap:2.6cqw}.section{margin-bottom:1.05cqw}h3{font-size:1.4cqw;color:#17374e;border-bottom:2px solid #234a61;padding-bottom:.4cqw;margin-bottom:.55cqw;gap:.55cqw}h3 small{background:transparent;color:#0997df;width:auto;min-width:0;height:auto;font-size:.83cqw;font-weight:600}.item{font-size:1.1cqw;border-bottom:1px solid #e8eef2;padding-bottom:.4cqw;margin-bottom:.45cqw;line-height:1.4}.meta{font-size:.96cqw;color:#738391}.activity li{font-size:1.06cqw;margin-bottom:.4cqw;line-height:1.45}.activity li:before{background:#30a8e8}.tool-chip{background:#f7fbfe;border-color:#dfebf2;font-size:1cqw}.tool-title{font-size:.95cqw}.footer{left:3.3cqw;right:3.3cqw;color:#718a9a;font-size:.7cqw}.sport-list{font-size:1.04cqw}
+@media screen and (max-width:760px){.resume{padding:24px 20px 60px}.layout{display:block;margin-top:20px}.profile{border:0;border-bottom:1px solid #d9e5ed;padding:0 0 22px;margin-bottom:25px}.portrait{float:left;width:90px;height:120px;margin:0 18px 14px 0}.profile h1{font-size:30px}.major{font-size:14px}.intro{clear:both;font-size:15px}.mini-label{font-size:10px;margin:14px 0 4px}.tags{font-size:14px}.contact{font-size:13px}.contact span{font-size:10px}.career-title{font-size:40px}.content-head{gap:14px;margin-bottom:22px;padding-bottom:12px}.content-head h2{font-size:13px}.columns{display:block}h3{font-size:19px;padding-bottom:9px;margin-bottom:12px}h3 small{font-size:12px}.item,.activity li{font-size:15px;margin-bottom:10px}.item{padding-bottom:8px}.meta{font-size:13px}.section{margin-bottom:26px}.tool-title{font-size:13px}.tool-chip{font-size:13px}.sport-list{font-size:14px}.footer{left:20px;right:20px;font-size:9px}}
+
+/* Photo backgrounds, white lettering with cyan outlines, no divider lines. */
+.cover-bg{opacity:1;object-fit:cover;object-position:center}
+.cover-shade{background:rgba(255,255,255,.79)}
+.data-orbit,.cover:after{display:none}
+.hero h1,.hero h1 span{color:#fff;-webkit-text-stroke:.11cqw #139fe7;paint-order:stroke fill;text-shadow:0 0 .8cqw #35aaff40;background:none}
+.resume{background-image:linear-gradient(#ffffffee,#ffffffee),url("assets/images/resume-background-01.jpg");background-size:cover;background-position:center}
+.toolbar,.profile,.topline,.content-head,h3,.item,.contact,.footer,.tool-chip,.hero-link{border:0!important}
+.page,.portrait,.tool-chip{box-shadow:none}
+.tool-chip{background:#f3f8fbc9}
+.hero-link{background:#ffffffb8;border-radius:2cqw;padding:.8cqw 1.5cqw}
+.content-head{padding-bottom:.5cqw}
+.profile{padding-right:1.5cqw}
+.item{padding-bottom:.3cqw}
+@media print{.hero h1,.hero h1 span{-webkit-text-stroke:.11cqw #139fe7}}
+
+.cover-shade{background:linear-gradient(90deg,#ffffffb8 0%,#ffffff91 48%,#ffffff45 100%)}
+.hero{top:19cqw}
+.hero h1{font-size:7.2cqw;line-height:1.2;white-space:nowrap;letter-spacing:-.06em}
+.hero h1 span{margin-left:.6cqw}
+.hero-lead{top:14cqw;font-size:1.75cqw}
+.hero-bottom{margin:7.4cqw 0 0;font-size:1.75cqw}
+.hero-link{top:24cqw}
+.resume{background-image:linear-gradient(#fffffff2,#fffffff2),url("assets/images/resume-background-01.jpg")}
+.portrait{width:12cqw;height:15cqw;object-position:center 22%}
+.tool-list{display:flex;flex-wrap:wrap;gap:.5cqw;margin-bottom:.55cqw}
+.tool-chip{flex-direction:column;justify-content:flex-start;gap:.3cqw;min-width:5.6cqw;max-width:9.3cqw;padding:.45cqw .5cqw;white-space:normal;text-align:center;font-size:.87cqw;background:#edf7fcc9;border:0!important}
+.tool-icon{width:2.5cqw;height:2.5cqw;font-size:1.2cqw;border-radius:.4cqw}
+.tool-title{margin:.5cqw 0 .25cqw}
+@media screen and (max-width:760px){.portrait{width:110px;height:145px}.tool-chip{min-width:76px;max-width:130px;font-size:12px;padding:8px;gap:6px}.tool-icon{width:36px;height:36px;font-size:18px}.tool-list{gap:7px}.tool-title{margin:14px 0 7px}}
+
+.overview{padding:3cqw 4cqw;background:#fff}.overview-head{display:flex;justify-content:space-between;align-items:center}.eyebrow{font-size:.85cqw;color:#6d8b9e;letter-spacing:.17em}.overview-head h2{font:800 3.6cqw Arial,sans-serif;color:#119bdd;margin:.4cqw 0 0;letter-spacing:-.05em}.overview-head h2 span{font-family:inherit;font-size:1.2cqw;color:#547083;letter-spacing:0;margin-left:1.5cqw;font-weight:400}.overview-head button{font-size:1cqw;border-radius:3cqw;padding:.8cqw 1.2cqw;background:#eaf6fd;color:#167eaf}.overview-layout{display:grid;grid-template-columns:23% 1fr;gap:3cqw;margin-top:2cqw}.identity .portrait{width:11cqw;height:14cqw;margin:0 0 1cqw;float:none}.identity h1{font-size:2.7cqw;letter-spacing:-.06em;margin:.4cqw 0}.identity p{font-size:1.13cqw;color:#567083;line-height:1.6;margin:.5cqw 0 1.3cqw}.identity-key{font-size:1.55cqw;line-height:1.65;font-weight:600;color:#138dc6;margin-bottom:1.3cqw}.identity>a{font-size:.92cqw;color:#658093}.overview-intro{font-size:1.7cqw;line-height:1.5;margin:0 0 1.6cqw;color:#516b7c;letter-spacing:-.04em}.overview-intro strong{color:#17394e;font-weight:600}.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9cqw 1cqw}.fact{padding:1.25cqw 1.5cqw;background:#f1f8fc;border-radius:.9cqw;min-height:10.6cqw}.fact:nth-child(2),.fact:nth-child(3),.fact:nth-child(6){background:#f7f9fa}.fact-label{font-size:.72cqw;letter-spacing:.1em;color:#6c92aa}.fact h3{border:0!important;font-size:1.4cqw;margin:.4cqw 0 .6cqw;padding:0;color:#183b52}.fact-main{font-size:1.23cqw;line-height:1.55;font-weight:500;margin:0;color:#193c51}.fact-note{font-size:.98cqw;line-height:1.5;color:#6c8190;margin:.35cqw 0 0}.big-number{font-size:2.65cqw;line-height:1.1;color:#078ecc;font-weight:700;margin:0}.big-number span{font-size:1.2cqw;font-weight:400;color:#7c94a4}.overview-foot{position:absolute;bottom:1.4cqw;left:4cqw;right:4cqw;display:flex;justify-content:space-between;font-size:.77cqw;color:#7791a1;letter-spacing:.04em}dialog{border:0;border-radius:12px;padding:0;width:min(1400px,96vw);max-width:96vw;max-height:94svh;overflow:auto;color:#173349;background:white}dialog::backdrop{background:#102b3d80}.dialog-bar{position:sticky;top:0;background:white;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;z-index:10}.dialog-bar button{border-radius:20px}.full-resume{container-type:inline-size;position:relative;min-height:56.25cqw;padding-bottom:5cqw}.full-resume .footer{display:none}
+@media screen and (max-width:760px){.overview{padding:25px 20px 65px}.eyebrow{font-size:9px}.overview-head h2{font-size:34px}.overview-head h2 span{display:block;font-size:12px;margin:8px 0 0}.overview-head button{font-size:11px;padding:9px 12px}.overview-layout{display:block;margin-top:22px}.identity .portrait{width:95px;height:125px;float:left;margin:0 18px 20px 0}.identity h1{font-size:29px}.identity p{font-size:13px}.identity-key{clear:both;font-size:14px;margin:12px 0}.identity-key br{display:none}.identity-key{word-spacing:10px}.identity>a{font-size:12px}.overview-intro{font-size:18px;margin:26px 0 18px}.fact-grid{gap:10px}.fact{padding:15px 12px;border-radius:9px;min-height:150px}.fact-label{font-size:8px}.fact h3{font-size:17px;margin:6px 0 10px}.fact-main{font-size:13px}.fact-note{font-size:11px;margin-top:7px}.big-number{font-size:30px}.big-number span{font-size:14px}.overview-foot{font-size:9px;left:20px;right:20px;bottom:16px;gap:20px}.full-resume{padding:20px}.full-resume .layout{display:block}}
+@media print{dialog{display:none!important}.overview-head button{display:none}.overview{height:1080px}}
+
+.editorial{background:#fff;color:#28333a;display:grid;grid-template-columns:19% 1fr;gap:3.6cqw;padding:3cqw 4cqw 2.5cqw}
+.editorial-person{padding-top:.2cqw}.editorial-person .portrait{width:12.8cqw;height:12.8cqw;border-radius:50%;object-fit:cover;object-position:50% 22%;margin:0;float:none;box-shadow:none}
+.signature{font-family:"Segoe Script","Apple Chancery",Georgia,cursive;font-style:italic;font-size:1.75cqw;letter-spacing:-.05em;color:#196994;margin:.1cqw 0 2.5cqw;white-space:nowrap}
+.editorial-person h1{font-size:1.45cqw;margin:0 0 .6cqw;letter-spacing:-.03em}.editorial-person>p{font-size:1.02cqw;line-height:1.65;margin:0 0 1cqw}
+.editorial-contact{font-size:.91cqw;line-height:1.7;overflow-wrap:anywhere}.editorial-contact a,.editorial-contact>span{display:block;margin-bottom:.35cqw}.editorial-contact>span{color:#7c8991;font-size:.82cqw}.editorial-traits{margin-top:1.5cqw}.editorial-traits>span{font-size:.75cqw;color:#84939e}.editorial-traits p{font-size:.94cqw;line-height:1.6;margin:.25cqw 0 .8cqw}
+.editorial-intro{min-height:12.7cqw;display:flex;align-items:flex-start;padding-top:2.5cqw}.editorial-intro p{font-size:1.24cqw;line-height:1.85;margin:0;color:#324652;letter-spacing:-.025em}
+.editorial-grid{display:grid;grid-template-columns:.95fr 1.06fr 1.15fr;gap:3cqw 2.4cqw;align-items:start}
+.editorial-block{background:none;border:0;padding:0;margin:0}.editorial-block h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.05cqw;color:#203b4d;letter-spacing:.01em;padding:0;margin:0 0 1.1cqw;border:0!important;display:block}
+.editorial-block .item{font-size:.99cqw;line-height:1.65;border:0;margin:0 0 .65cqw;padding:0}.editorial-block .item b{font-weight:500}.editorial-block .meta{font-size:.86cqw;color:#82909a;line-height:1.5;margin-top:.15cqw}.editorial-block .grade{color:#293d48}
+.editorial-block .activity li{font-size:.97cqw;line-height:1.65;padding:0;margin-bottom:.55cqw}.editorial-block .activity li:before{display:none}
+.editorial-block .tool-title{font-size:.77cqw;color:#8b99a2;margin:.4cqw 0 .25cqw}.editorial-block .tool-list{gap:.3cqw;margin-bottom:.35cqw}.editorial-block .tool-chip{background:none;padding:0;min-width:0;max-width:none;flex-direction:row;gap:.3cqw;font-size:.77cqw;white-space:nowrap}.editorial-block .tool-icon{width:1.35cqw;height:1.35cqw;font-size:.65cqw;border-radius:.2cqw}.editorial-block .sport-list{font-size:.88cqw;line-height:1.6}
+@media screen and (max-width:760px){.editorial{display:block;aspect-ratio:auto;padding:28px 22px}.editorial-person{display:block}.editorial-person .portrait{width:140px;height:140px}.signature{font-size:23px;margin:3px 0 22px}.editorial-person h1{font-size:24px}.editorial-person>p{font-size:14px}.editorial-contact{font-size:13px}.editorial-contact>span{font-size:11px}.editorial-traits{margin-top:20px}.editorial-traits>span{font-size:11px}.editorial-traits p{font-size:13px;margin:4px 0 12px}.editorial-intro{min-height:0;padding:22px 0 30px}.editorial-intro p{font-size:16px;line-height:1.8}.editorial-grid{grid-template-columns:1fr 1fr;gap:28px 20px}.editorial-block h3{font-size:13px;margin-bottom:15px}.editorial-block .item,.editorial-block .activity li{font-size:13px;margin-bottom:10px}.editorial-block .meta{font-size:11px}.editorial-block .tool-title{font-size:11px;margin:10px 0 6px}.editorial-block .tool-list{gap:7px}.editorial-block .tool-chip{font-size:10px;gap:4px}.editorial-block .tool-icon{width:20px;height:20px;font-size:10px}.editorial-block .sport-list{font-size:12px}}
+
+/* Typography enlargement only: preserve existing composition and spacing. */
+@media(min-width:761px),print{
+.editorial-person h1{font-size:1.75cqw}
+.editorial-person>p{font-size:1.2cqw}
+.editorial-contact{font-size:1.05cqw}
+.editorial-contact>span{font-size:.96cqw}
+.editorial-traits>span{font-size:.9cqw}
+.editorial-traits p{font-size:1.1cqw}
+.editorial-intro p{font-size:1.43cqw}
+.editorial-block h3{font-size:1.28cqw}
+.editorial-block .item{font-size:1.16cqw}
+.editorial-block .meta{font-size:1.01cqw}
+.editorial-block .activity li{font-size:1.14cqw}
+.editorial-block .tool-title{font-size:.93cqw}
+.editorial-block .tool-chip{font-size:.93cqw}
+.editorial-block .sport-list{font-size:1.04cqw}
+}
+@media screen and (max-width:760px){
+.editorial-person>p{font-size:16px}.editorial-contact{font-size:15px}.editorial-contact>span{font-size:13px}.editorial-traits>span{font-size:13px}.editorial-traits p{font-size:15px}.editorial-intro p{font-size:18px}.editorial-block h3{font-size:15px}.editorial-block .item,.editorial-block .activity li{font-size:15px}.editorial-block .meta{font-size:13px}.editorial-block .tool-title{font-size:13px}.editorial-block .tool-chip{font-size:12px}.editorial-block .sport-list{font-size:14px}
+}
+
+/* Section heading size adjustment only. */
+@media(min-width:761px),print{.editorial-block h3{font-size:1.48cqw}}
+@media screen and (max-width:760px){.editorial-block h3{font-size:17px}}
+
+/* Slightly soften only the cover photograph. */
+.cover-shade{background:linear-gradient(90deg,rgba(255,255,255,.80) 0%,rgba(255,255,255,.68) 48%,rgba(255,255,255,.42) 100%)}
+
+.editorial-person h1{margin-top:.3cqw}
+@media screen and (max-width:760px){.editorial-person h1{margin-top:4px}}
+
+.hero-bottom .hero-person{color:#0088d5;font-weight:800}
+
+.spark{padding:3.4cqw 4.5cqw;background:#fff;color:#203746}.spark-kicker{font-size:.9cqw;letter-spacing:.15em;color:#748b9b;margin-bottom:1.4cqw}.spark-overview-grid{display:grid;grid-template-columns:59% 35%;gap:6%}.spark-story h2,.spark-process h2{font:800 5.6cqw/.95 Arial,sans-serif;letter-spacing:-.065em;margin:0;color:#149edf}.spark-story h2 span{display:block;color:#274b63;font-size:4.5cqw;margin-top:.4cqw}.spark-title{font-size:1.65cqw;line-height:1.5;margin:1.4cqw 0;color:#28465a;font-weight:500}.spark h3{font-family:inherit;font-size:1.25cqw;border:0!important;padding:0;margin:0 0 .65cqw;color:#27465b;display:block}.spark-copy{margin-top:1.6cqw}.spark-copy p{font-size:1.15cqw;line-height:1.65;color:#617584;margin:.5cqw 0}.spark-role{margin-top:1.65cqw}.spark-role>div{display:grid;grid-template-columns:13.2cqw 1fr;gap:.7cqw;margin-top:.65cqw}.spark-role>div>span{font-size:1.03cqw;color:#168bc2;line-height:1.6}.spark-role p{font-size:1.12cqw;line-height:1.6;margin:0}.stadium{margin:0}.stadium img{width:100%;height:22.4cqw;object-fit:cover;object-position:center 66%;display:block}.spark figcaption{font-size:.75cqw;color:#7c919e;margin-top:.45cqw}.spark-run{margin-top:1.1cqw}.spark-run>span{font-size:.8cqw;color:#5c8ba5}.spark-run>strong{display:block;font:700 4.1cqw/1.2 Arial,sans-serif;color:#159cdb;margin:.2cqw 0}.spark-run strong span{font-size:1.4cqw;margin-left:.4cqw}.spark-run p{font-size:1.1cqw;line-height:1.5;margin:.2cqw 0}.spark-run small{font-size:.78cqw;color:#8295a0}.spark-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;position:absolute;bottom:4.5cqw;left:4.5cqw;right:4.5cqw}.spark-timeline b{font:700 1.75cqw Arial;color:#179bd4}.spark-timeline p{font-size:1cqw;line-height:1.55;margin:.5cqw 0 0;color:#536e80}.spark-timeline p span{color:#8295a2}.spark-footer{position:absolute;bottom:1.4cqw;left:4.5cqw;right:4.5cqw;display:flex;justify-content:space-between;color:#8b9eaa;font-size:.72cqw;letter-spacing:.1em}
+.spark-process{display:grid;grid-template-columns:46% 49%;gap:5%;padding-top:3cqw}.spark-collage{display:grid;grid-template-columns:repeat(3,1fr);gap:1cqw;align-content:start;padding-top:3.4cqw}.spark-collage figure{margin:0}.spark-collage figure:nth-child(2){margin-top:6cqw}.spark-collage figure:nth-child(3){margin-top:2cqw}.spark-collage img{width:100%;height:31cqw;object-fit:contain;object-position:top;background:#f4f6f8;display:block}.spark-collage figcaption{font-size:.7cqw;line-height:1.5}.spark-process h2{font-size:4.7cqw}.spark-process h2 span{color:#274b63}.spark-process .spark-copy{margin-top:1.5cqw}.spark-process .spark-copy p{font-size:1.05cqw}.spark-tools{display:flex;gap:1.7cqw;font-size:1cqw;align-items:center}.spark-tools>span{display:flex;align-items:center;gap:.5cqw}.spark-tools b{display:grid;place-items:center;width:2.1cqw;height:2.1cqw;color:white;border-radius:.35cqw;font:600 1.2cqw Arial}.figma-symbol{background:#9056dc}.canva-symbol{background:#08afc1}.gpt-symbol{background:#16896e}.spark-insights{margin-top:1.7cqw}.spark-insights p{margin:.9cqw 0;font-size:1.05cqw;line-height:1.6}.spark-insights b{display:block;font-weight:600;color:#244b62}.spark-insights p span{display:block;color:#728794;font-size:.97cqw}
+@media screen and (max-width:760px){.spark{aspect-ratio:auto;padding:28px 22px 60px}.spark-kicker{font-size:10px;margin-bottom:18px}.spark-overview-grid{display:block}.spark-story h2{font-size:54px}.spark-story h2 span{font-size:42px;margin-top:8px}.spark-title{font-size:20px;margin:20px 0}.spark h3{font-size:17px;margin-bottom:10px}.spark-copy,.spark-role{margin-top:25px}.spark-copy p{font-size:14px}.spark-role>div{display:block;margin-top:18px}.spark-role>div>span{font-size:13px}.spark-role p{font-size:14px;margin-top:5px}.spark-right{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.stadium img{height:220px}.spark figcaption{font-size:10px;margin-top:6px}.spark-run{margin-top:0}.spark-run>span{font-size:10px}.spark-run>strong{font-size:55px;margin:8px 0}.spark-run strong span{font-size:20px}.spark-run p{font-size:14px}.spark-run small{font-size:11px}.spark-timeline{position:static;grid-template-columns:1fr;gap:18px;margin-top:30px}.spark-timeline b{font-size:23px}.spark-timeline p{font-size:14px;margin-top:6px}.spark-footer{font-size:9px;left:22px;right:22px;bottom:16px}.spark-process{display:flex;flex-direction:column;gap:25px}.spark-process-copy{order:0}.spark-collage{order:1;padding-top:0;gap:10px}.spark-collage img{height:250px}.spark-collage figure:nth-child(2),.spark-collage figure:nth-child(3){margin-top:0}.spark-process h2{font-size:45px}.spark-process .spark-copy{margin-top:25px}.spark-process .spark-copy p{font-size:14px}.spark-tools{font-size:13px;gap:15px}.spark-tools>span{gap:6px}.spark-tools b{width:26px;height:26px;font-size:16px;border-radius:4px}.spark-insights{margin-top:25px}.spark-insights p{font-size:14px;margin:14px 0}.spark-insights p span{font-size:13px}}
+
+.brief{display:grid;grid-template-columns:49% 47%;gap:4%;padding:3.2cqw 4cqw 3cqw;background:#fff}.brief-eyebrow{font-size:.8cqw;letter-spacing:.14em;color:#8095a3}.brief-left>h2{font:800 5.3cqw/.98 Arial,"Malgun Gothic",sans-serif;letter-spacing:-.07em;color:#149bdb;margin:1.2cqw 0 2cqw}.brief-left>h2 span{font-size:3.8cqw}.brief-left>h2 b{display:block;font-size:4.35cqw;color:#35546a;font-weight:800;margin-top:.5cqw}.brief h3{font-size:1.25cqw;font-weight:700;margin:0 0 .7cqw;padding:0;border:0}.brief-description p{font-size:1.12cqw;line-height:1.7;color:#687f90;margin:0}.brief-roles{margin-top:2cqw}.brief-roles article{margin:1cqw 0 1.25cqw}.brief-roles article>span{color:#1b94cb;font-size:.95cqw;font-weight:600}.brief h4{font-size:1.1cqw;line-height:1.5;margin:.3cqw 0 .35cqw;font-weight:600}.brief-roles p{font-size:1.08cqw;line-height:1.6;margin:0;color:#5a7487}.brief-roles small{font-size:.91cqw;line-height:1.6;color:#8596a2;display:block;margin-top:.25cqw}.data-heading{margin-bottom:.8cqw!important}.marketing-panel h4{color:#315b74;margin:0 0 .55cqw}.marketing-panel table{width:100%;border-collapse:collapse;font-size:.85cqw;line-height:1.45;text-align:left}.marketing-panel th{color:#3886ad;font-weight:600;background:#f1f8fc;padding:.45cqw}.marketing-panel td{padding:.42cqw .45cqw;vertical-align:top}.marketing-panel tr:nth-child(even){background:#f8fafb}.marketing-panel td:first-child{width:18%;font-weight:600;white-space:nowrap}.marketing-panel td:last-child{width:26%;color:#718898}.source-note{font-size:.65cqw!important;color:#90a0ab!important;line-height:1.5;margin:.4cqw 0 0}.recruit-graph{margin:.65cqw 0 0}.recruit-graph img{width:100%;height:13cqw;object-fit:contain;object-position:left center;display:block;background:#f5f8fa}.recruit-graph figcaption{font-size:.66cqw;color:#8396a3;margin-top:.25cqw}.brief-bottom{display:grid;grid-template-columns:72% 24%;gap:4%;margin-top:1.35cqw}.brief-bottom h3{font-size:1.05cqw;margin-bottom:.65cqw}.competency-inner{display:flex;gap:.85cqw;align-items:center}.competency-donut{width:7.3cqw;height:7.3cqw;flex-shrink:0;border-radius:50%;background:conic-gradient(#168fd3 0% 25%,#68bbdf 25% 50%,#879daf 50% 75%,#b8d9e8 75%);display:grid;place-items:center;position:relative}.competency-donut:before{content:"";position:absolute;inset:1.6cqw;background:white;border-radius:50%}.competency-donut>span{z-index:1;color:#567689;font:700 .7cqw/1.4 Arial;text-align:center}.competency ul{list-style:none;padding:0;margin:0}.competency li{position:relative;padding-left:.8cqw;margin:.35cqw 0;font-size:.83cqw;line-height:1.3}.competency i{position:absolute;left:0;top:.3cqw;width:.4cqw;height:.4cqw;border-radius:50%}.competency li b{font-weight:600}.competency li span{display:block;color:#899aa5;font-size:.68cqw;margin-top:.1cqw}.brief-tool{display:flex;align-items:center;gap:.45cqw;font-size:.92cqw;margin-bottom:.7cqw}.brief-tool-logo{width:2cqw;height:2cqw;display:grid;place-items:center;color:#fff;border-radius:.35cqw;font:600 1.15cqw Arial;flex-shrink:0}.figma-logo svg{height:1.8cqw;width:1.2cqw}
+@media screen and (max-width:760px){.brief{display:block;padding:28px 22px 60px}.brief-eyebrow{font-size:10px}.brief-left>h2{font-size:52px;margin:20px 0 25px}.brief-left>h2 span{font-size:36px}.brief-left>h2 b{font-size:43px;margin-top:8px}.brief h3{font-size:18px;margin-bottom:12px}.brief-description p{font-size:14px}.brief-roles{margin-top:25px}.brief-roles article{margin:20px 0}.brief-roles article>span{font-size:12px}.brief h4{font-size:15px;margin:7px 0}.brief-roles p{font-size:14px}.brief-roles small{font-size:12px}.brief-right{margin-top:28px}.marketing-panel table{font-size:11px}.marketing-panel th,.marketing-panel td{padding:7px 4px}.source-note{font-size:9px!important;margin-top:7px}.recruit-graph{margin-top:14px}.recruit-graph img{height:210px}.recruit-graph figcaption{font-size:9px;margin-top:6px}.brief-bottom{grid-template-columns:1fr;gap:25px;margin-top:25px}.brief-bottom h3{font-size:17px;margin-bottom:12px}.competency-inner{gap:18px}.competency-donut{width:110px;height:110px}.competency-donut:before{inset:24px}.competency-donut>span{font-size:11px}.competency li{font-size:13px;padding-left:13px;margin:7px 0}.competency i{width:6px;height:6px;top:5px}.competency li span{font-size:11px;margin-top:3px}.brief-toolbox{display:flex;flex-wrap:wrap;gap:14px}.brief-toolbox h3{width:100%}.brief-tool{font-size:14px;gap:7px}.brief-tool-logo{width:28px;height:28px;font-size:17px;border-radius:5px}.figma-logo svg{height:25px;width:18px}}
+
+.competency-donut{background:conic-gradient(#168fd3 0% 25%,#68bbdf 25% 60%,#879daf 60% 80%,#b8d9e8 80% 100%)}
+.confirmed-total{color:#078dcc;font-size:1.35em}
+
+.simple-brief{grid-template-columns:48% 48%;gap:4%;padding:3.2cqw 4cqw 3cqw}
+.simple-brief .brief-left>h2{font-size:5.6cqw;margin:1.5cqw 0 2.5cqw}.simple-brief .brief-left>h2 span{font-size:3.7cqw}.simple-brief .brief-left>h2 b{font-size:4.6cqw}
+.simple-brief .brief-description p{font-size:1.2cqw;line-height:1.7}.simple-brief .brief-roles{margin-top:2.4cqw}.simple-brief .brief-roles article{margin:1.4cqw 0 1.7cqw}.simple-brief .brief-roles article>span{font-size:1.02cqw}.simple-brief .brief-roles h4{font-size:1.22cqw;margin:.45cqw 0}.simple-brief .brief-roles p{font-size:1cqw;color:#8296a4}
+.recruit-heading{display:flex;justify-content:space-between;align-items:center}.recruit-heading>div>span{font-size:.9cqw;color:#8399a8}.recruit-heading h3{font-size:1.7cqw;margin:.45cqw 0 0}.recruit-total{text-align:right}.recruit-total strong{font:700 3.5cqw/1.1 Arial,sans-serif;color:#149ddd}.recruit-total strong span{font-size:1.2cqw;margin-left:.3cqw}.recruit-total small{display:block;font-size:.8cqw;color:#8295a4;margin-top:.25cqw}.application-chart{display:block;width:100%;height:23.5cqw;margin-top:1.25cqw;overflow:visible}.reconcile-note{font-size:.73cqw;margin:.2cqw 0 1.65cqw;color:#899ca9}.simple-brief .competency h3{font-size:1.28cqw;margin-bottom:1cqw}.simple-brief .competency-inner{gap:2cqw}.simple-brief .competency-donut{width:11cqw;height:11cqw}.simple-brief .competency-donut:before{inset:2.5cqw}.simple-brief .competency li{font-size:1.05cqw;margin:.6cqw 0;padding-left:1cqw}.simple-brief .competency i{width:.5cqw;height:.5cqw;top:.4cqw}.simple-brief .competency li span{font-size:.84cqw;margin-top:.2cqw}.simple-brief .competency .source-note{font-size:.7cqw!important;margin-top:.8cqw}
+@media screen and (max-width:760px){.simple-brief{display:block;padding:28px 22px 60px}.simple-brief .brief-left>h2{font-size:52px;margin:20px 0 28px}.simple-brief .brief-left>h2 span{font-size:34px}.simple-brief .brief-left>h2 b{font-size:44px}.simple-brief .brief-description p{font-size:15px}.simple-brief .brief-roles{margin-top:26px}.simple-brief .brief-roles article{margin:20px 0}.simple-brief .brief-roles article>span{font-size:13px}.simple-brief .brief-roles h4{font-size:16px;margin:7px 0}.simple-brief .brief-roles p{font-size:13px}.recruit-heading>div>span{font-size:12px}.recruit-heading h3{font-size:23px;margin-top:6px}.recruit-total strong{font-size:46px}.recruit-total strong span{font-size:17px}.recruit-total small{font-size:11px}.application-chart{height:auto;margin-top:20px}.reconcile-note{font-size:10px;margin:5px 0 28px}.simple-brief .competency h3{font-size:18px;margin-bottom:16px}.simple-brief .competency-inner{gap:20px}.simple-brief .competency-donut{width:135px;height:135px}.simple-brief .competency-donut:before{inset:30px}.simple-brief .competency li{font-size:13px;margin:9px 0;padding-left:12px}.simple-brief .competency i{width:6px;height:6px;top:5px}.simple-brief .competency li span{font-size:11px;margin-top:3px}.simple-brief .competency .source-note{font-size:9px!important;margin-top:13px}}
+
+/* Full-width description and compact 2x2 role grid with outer breathing room. */
+.simple-brief{grid-template-columns:48% 48%;column-gap:4%;padding:3.7cqw 4.5cqw 3.5cqw;position:relative}
+.simple-brief .brief-left>h2{margin:1.1cqw 0 1.5cqw;font-size:5cqw}.simple-brief .brief-left>h2 span{font-size:3.45cqw}.simple-brief .brief-left>h2 b{font-size:4cqw}
+.simple-brief .brief-description{position:absolute;top:17.7cqw;left:4.5cqw;right:4.5cqw}
+.simple-brief .brief-description h3{margin-bottom:.55cqw}
+.simple-brief .brief-description p{font-size:1.17cqw;line-height:1.7;white-space:nowrap}
+.simple-brief .brief-roles{margin-top:10.2cqw}
+.simple-brief .role-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.9cqw 1.6cqw}
+.simple-brief .brief-roles article{margin:0;padding:0}
+.simple-brief .brief-roles h3{margin-bottom:1.2cqw}
+.simple-brief .brief-roles article>span{font-size:.9cqw}
+.simple-brief .brief-roles h4{font-size:1.4cqw;margin:.5cqw 0 .6cqw}
+.simple-brief .brief-roles p{font-size:1.07cqw;line-height:1.8}
+.simple-brief .brief-right{padding-top:0}
+.simple-brief .application-chart{height:19cqw;margin-top:7.4cqw}
+.simple-brief .reconcile-note{margin-bottom:1.2cqw}
+.simple-brief .competency-donut{width:10cqw;height:10cqw}
+@media screen and (max-width:760px){.simple-brief{padding:28px 22px 60px}.simple-brief .brief-left>h2{font-size:50px;margin:18px 0 25px}.simple-brief .brief-left>h2 span{font-size:33px}.simple-brief .brief-left>h2 b{font-size:40px}.simple-brief .brief-description{position:static}.simple-brief .brief-description p{font-size:14px;white-space:normal}.simple-brief .brief-roles{margin-top:28px}.simple-brief .role-grid{gap:24px 16px}.simple-brief .brief-roles h3{margin-bottom:18px}.simple-brief .brief-roles article>span{font-size:10px}.simple-brief .brief-roles h4{font-size:17px;margin:8px 0}.simple-brief .brief-roles p{font-size:12px;line-height:1.7}.simple-brief .application-chart{height:auto;margin-top:20px}.simple-brief .competency-donut{width:135px;height:135px}}
+
+@media(min-width:761px),print{.simple-brief .brief-right{padding-top:18cqw}.simple-brief .application-chart{height:13.5cqw;margin-top:.6cqw}.simple-brief .competency-donut{width:8.5cqw;height:8.5cqw}.simple-brief .competency-donut:before{inset:1.9cqw}.simple-brief .competency li{margin:.4cqw 0}}
+
+/* Preserve the existing photo collage; edit only the adjacent copy area. */
+.spark-process .process-project-title{font-size:3.55cqw;line-height:1.1;margin:0 0 2cqw;letter-spacing:-.06em;color:#139cdb;font-family:Arial,"Malgun Gothic",sans-serif}
+.spark-process .process-project-title span{color:#31546c}
+.process-two-columns{display:grid;grid-template-columns:44% 51%;gap:5%;margin-bottom:2.4cqw}
+.process-two-columns h3,.process-insights>h3{font-size:1.35cqw;margin:0 0 1.1cqw}
+.process-tool-section .spark-tools{display:flex;flex-direction:column;align-items:flex-start;gap:1cqw;font-size:1.15cqw}
+.process-tool-section .spark-tools b{width:2.45cqw;height:2.45cqw;font-size:1.4cqw}
+.process-deliverables p{margin:0 0 .85cqw;line-height:1.5;font-size:1.05cqw}
+.process-deliverables b{display:block;font-weight:600;color:#31566e}.process-deliverables p span{display:block;color:#8396a3;font-size:.9cqw;margin-top:.2cqw}
+.process-insights article{display:flex;gap:.9cqw;margin:0 0 1.2cqw}.process-insights article>span{font:700 1.2cqw Arial;color:#1b9ad4;margin-top:.15cqw}
+.process-insights h4{font-size:1.18cqw;font-weight:600;color:#31546c;margin:0 0 .4cqw}.process-insights p{font-size:1.02cqw;line-height:1.7;color:#738a9b;margin:0}
+@media screen and (max-width:760px){.spark-process .process-project-title{font-size:34px;margin:0 0 25px}.process-two-columns{gap:18px;margin-bottom:28px}.process-two-columns h3,.process-insights>h3{font-size:17px;margin-bottom:16px}.process-tool-section .spark-tools{gap:13px;font-size:14px}.process-tool-section .spark-tools b{width:30px;height:30px;font-size:18px}.process-deliverables p{font-size:14px;margin-bottom:12px}.process-deliverables p span{font-size:12px;margin-top:4px}.process-insights article{gap:12px;margin-bottom:20px}.process-insights article>span{font-size:15px}.process-insights h4{font-size:16px;margin-bottom:6px}.process-insights p{font-size:14px}}
+
+/* Five supplied images in the reference's two staggered photo columns. */
+.spark-process .five-photo-collage{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw;padding:0;margin:0;height:49.4cqw;align-content:stretch;order:0}
+.five-photo-collage .photo-column{display:grid;gap:1.2cqw;min-height:0}
+.five-photo-collage .photo-column-left{grid-template-rows:1fr 1fr}
+.five-photo-collage .photo-column-right{grid-template-rows:12cqw 23cqw 12cqw}
+.five-photo-collage figure,.five-photo-collage figure:nth-child(2),.five-photo-collage figure:nth-child(3){margin:0;min-height:0;overflow:hidden}
+.five-photo-collage img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#f1f5f8}
+.five-photo-collage .photo-poster img{object-position:center 47%}
+.five-photo-collage .photo-top img{object-position:center 57%}
+.five-photo-collage .photo-middle img{object-position:center}
+.five-photo-collage .photo-bottom img{object-position:center 35%}
+@media screen and (max-width:760px){.spark-process .five-photo-collage{height:auto;grid-template-columns:1fr 1fr;gap:12px;order:1}.five-photo-collage .photo-column{gap:12px}.five-photo-collage .photo-column-left{grid-template-rows:1fr 1fr}.five-photo-collage .photo-column-right{grid-template-rows:130px 240px 130px}.five-photo-collage img{height:100%;width:100%}}
+
+/* Edge-to-edge collage and restored upper chart alignment. */
+@media(min-width:761px),print{
+.spark-process .five-photo-collage{position:absolute;left:4.5cqw;top:0;bottom:0;height:auto;width:41.86cqw}
+.five-photo-collage .photo-column-right{grid-template-rows:14cqw 25.85cqw 14cqw}
+.spark-process .spark-process-copy{grid-column:2}
+.simple-brief .brief-description{position:static}
+.simple-brief .brief-description p{white-space:normal;font-size:1.15cqw;line-height:1.7}
+.simple-brief .brief-left>h2{margin-bottom:1.6cqw}
+.simple-brief .brief-roles{margin-top:2.1cqw}
+.simple-brief .brief-right{padding-top:0}
+.simple-brief .application-chart{height:22cqw;margin-top:1.25cqw}
+.simple-brief .competency-donut{width:10cqw;height:10cqw}
+.simple-brief .competency-donut:before{inset:2.3cqw}
+}
+@media screen and (max-width:760px){
+.spark-process .five-photo-collage{margin-bottom:-60px;margin-top:0}
+.simple-brief .brief-description p{white-space:normal}
+}
+
+/* Clear image separation, uncropped third video, stronger project hierarchy. */
+.five-photo-collage figure{border:1px solid #a9bac7;box-shadow:0 0 0 1px #ffffff99;box-sizing:border-box;background:#f2f6f9}
+.five-photo-collage .photo-bottom img{object-fit:contain;object-position:center;background:#edf3f7}
+.simple-brief .brief-left>h2,.simple-brief .brief-left>h2 span,.simple-brief .brief-left>h2 b{color:#148fcd;font-weight:800;letter-spacing:-.055em}
+.simple-brief .brief-left>h2{font-size:4.7cqw;line-height:1.06;margin-top:1.2cqw;margin-bottom:1.6cqw}
+.simple-brief .brief-left>h2 span{font-size:3.55cqw}
+.simple-brief .brief-left>h2 b{font-size:4.7cqw;margin-top:.35cqw}
+.spark-process .process-project-title,.spark-process .process-project-title span{color:#148fcd}
+@media(min-width:761px),print{
+.simple-brief .brief-description h3,.simple-brief .brief-roles>h3{font-size:1.5cqw}
+.simple-brief .brief-description p{font-size:1.25cqw;line-height:1.7}
+.simple-brief .brief-roles h4{font-size:1.53cqw}
+.simple-brief .brief-roles p{font-size:1.18cqw;line-height:1.7}
+.simple-brief .brief-roles article>span{font-size:1cqw}
+}
+@media screen and (max-width:760px){.simple-brief .brief-left>h2{font-size:46px;margin-top:18px;margin-bottom:25px}.simple-brief .brief-left>h2 span{font-size:33px}.simple-brief .brief-left>h2 b{font-size:46px;margin-top:5px}.simple-brief .brief-description h3,.simple-brief .brief-roles>h3{font-size:20px}.simple-brief .brief-description p{font-size:16px}.simple-brief .brief-roles h4{font-size:18px}.simple-brief .brief-roles p{font-size:14px}.simple-brief .brief-roles article>span{font-size:11px}}
+
+@media(min-width:761px),print{
+.five-photo-collage .photo-column-right{grid-template-rows:12cqw 18cqw 23.85cqw}
+.simple-brief .chart-with-total{display:flex;align-items:flex-start;gap:.5cqw;margin-top:1.2cqw}
+.simple-brief .chart-with-total .application-chart{width:87%;height:20cqw;margin:0;flex:1;min-width:0}
+.simple-brief .chart-with-total .recruit-total{padding-top:1.4cqw;width:13%;text-align:left;flex-shrink:0}
+.simple-brief .chart-with-total .recruit-total strong{font-size:1.9cqw;line-height:1.2}
+.simple-brief .chart-with-total .recruit-total strong span{font-size:.9cqw;margin-left:.1cqw}
+.simple-brief .chart-with-total .recruit-total small{font-size:.65cqw;white-space:nowrap}
+.simple-brief .competency h3{font-size:1.65cqw;margin-bottom:.8cqw}
+.simple-brief .competency-donut{width:12cqw;height:12cqw}
+.simple-brief .competency-donut:before{inset:2.7cqw}
+.simple-brief .competency li{font-size:1.14cqw;margin:.6cqw 0}
+.simple-brief .competency li span{font-size:.9cqw}
+}
+.reflection-prompt{font-size:1.05cqw!important;line-height:1.8!important;color:#728a9b}
+@media screen and (max-width:760px){.five-photo-collage .photo-column-right{grid-template-rows:130px 190px 260px}.simple-brief .chart-with-total{display:flex;align-items:flex-start;gap:8px;margin-top:20px}.simple-brief .chart-with-total .application-chart{width:85%;min-width:0;margin:0}.simple-brief .chart-with-total .recruit-total{padding-top:18px;width:15%;text-align:left}.simple-brief .chart-with-total .recruit-total strong{font-size:24px}.simple-brief .chart-with-total .recruit-total strong span{font-size:12px}.simple-brief .chart-with-total .recruit-total small{font-size:9px}.simple-brief .competency h3{font-size:21px}.simple-brief .competency-donut{width:150px;height:150px}.simple-brief .competency-donut:before{inset:34px}.reflection-prompt{font-size:13px!important}}
+
+/* Balanced overview columns and total anchored to the final plotted point. */
+@media(min-width:761px),print{
+.simple-brief{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:4cqw;padding-left:4.5cqw;padding-right:4.5cqw}
+.simple-brief .chart-with-total{display:block;margin-top:1.2cqw}
+.simple-brief .chart-with-total .application-chart{display:block;width:100%;height:22cqw;margin:0}
+/* All three videos share the same full 9:16 frame. The page clips only the outer two. */
+.five-photo-collage .photo-column-right{display:block;position:relative;overflow:hidden;min-height:0}
+.five-photo-collage .photo-column-right .photo-video{position:absolute;left:0;right:0;width:100%;height:auto;aspect-ratio:9/16;overflow:hidden}
+.five-photo-collage .photo-column-right .photo-video img{width:100%;height:100%;object-fit:cover;object-position:center;background:#edf3f7}
+.five-photo-collage .photo-column-right .photo-top{top:auto;bottom:calc(100% - 8.2cqw)}
+.five-photo-collage .photo-column-right .photo-middle{top:11cqw}
+.five-photo-collage .photo-column-right .photo-bottom{top:49.4cqw}
+/* Increase the whole text column while keeping compact, consistent leading. */
+.spark-process .spark-kicker{font-size:1cqw}
+.spark-process .process-project-title{font-size:3.85cqw;margin-bottom:1.8cqw}
+.process-two-columns{grid-template-columns:42% 54%;gap:4%;margin-bottom:1.8cqw}
+.process-two-columns h3,.process-insights>h3{font-size:1.5cqw;margin-bottom:1cqw}
+.process-tool-section .spark-tools{font-size:1.35cqw;gap:1.05cqw}
+.process-tool-section .spark-tools b{width:2.7cqw;height:2.7cqw;font-size:1.55cqw}
+.process-deliverables p{font-size:1.2cqw;margin-bottom:.9cqw;line-height:1.5}
+.process-deliverables p span{font-size:1.08cqw;line-height:1.6;margin-top:.3cqw}
+.process-insights article{gap:.9cqw;margin-bottom:1cqw}
+.process-insights article>span{font-size:1.35cqw}
+.process-insights h4{font-size:1.32cqw;margin-bottom:.35cqw}
+.process-insights p{font-size:1.16cqw;line-height:1.55}
+}
+@media screen and (max-width:760px){.simple-brief .chart-with-total{display:block}.simple-brief .chart-with-total .application-chart{width:100%;height:auto}.five-photo-collage .photo-column-right{display:block;position:relative;overflow:hidden}.five-photo-collage .photo-column-right .photo-video{position:absolute;left:0;right:0;width:100%;height:auto;aspect-ratio:9/16}.five-photo-collage .photo-column-right .photo-video img{object-fit:cover;object-position:center;height:100%}.five-photo-collage .photo-top{bottom:calc(100% - 65px)}.five-photo-collage .photo-middle{top:85px}.five-photo-collage .photo-bottom{top:400px}.spark-process .process-project-title{font-size:37px}.process-two-columns h3,.process-insights>h3{font-size:19px}.process-tool-section .spark-tools{font-size:16px}.process-deliverables p{font-size:15px}.process-deliverables p span{font-size:14px}.process-insights h4{font-size:18px}.process-insights p{font-size:16px}}
+
+.process-deliverables p span strong,.process-insights p strong{font-weight:700;color:#31546c}
+@media(min-width:761px),print{.process-two-columns{grid-template-columns:30% 66%;gap:4%}.process-deliverables p span,.process-insights p{word-break:keep-all;text-wrap:pretty}.process-insights p{max-width:100%}}
+
+/* Distinguish subsection headings from bold terms within body copy. */
+.spark-process .process-two-columns h3,.spark-process .process-insights>h3{color:#078ecf;font-weight:800}
+.spark-process .process-deliverables p>b,.spark-process .process-insights h4{color:#148bc2;font-weight:700}
+.spark-process .process-deliverables p span strong,.spark-process .process-insights p strong{color:#344653;font-weight:700}
+
+/* Requested local refinements only. */
+.spark-process .process-deliverables>h3,.spark-process .process-insights>h3{color:#111}
+.spark-process .process-deliverables p span strong,.spark-process .process-insights p strong{color:#111}
+.spark-process .process-deliverables p span.reading-unit,.spark-process .process-insights p span.reading-unit{display:inline-block;font:inherit;color:inherit;margin:0;white-space:nowrap}
+.spark-process .process-tool-section .spark-tools{gap:.8cqw}
+.spark-process .tool-category{display:flex;flex-wrap:wrap;gap:.25em .4em;align-items:baseline;line-height:1.6}
+.spark-process .process-tool-section .tool-category>b{display:inline;width:auto;height:auto;background:none;color:#111;border-radius:0;font-family:inherit;font-size:1.05cqw;font-weight:700;line-height:1.6;white-space:nowrap}
+.spark-process .tool-category>span{font-size:1.05cqw;white-space:nowrap}
+@media(min-width:761px),print{
+.simple-brief{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:3cqw;padding-left:4.5cqw;padding-right:4.5cqw}
+.simple-brief .brief-left,.simple-brief .brief-right{min-width:0}
+.simple-brief .role-grid{grid-template-columns:max-content max-content;column-gap:1.2cqw}
+.simple-brief .competency-inner{width:100%;justify-content:space-between;gap:1.5cqw}
+.simple-brief .competency-donut{width:13cqw;height:13cqw}
+.simple-brief .competency-donut:before{inset:2.9cqw}
+.simple-brief .competency ul{flex:1;min-width:0}
+}
+@media screen and (max-width:760px){
+.spark-process .process-tool-section .spark-tools{gap:12px}
+.spark-process .process-tool-section .tool-category>b,.spark-process .tool-category>span{font-size:14px}
+.simple-brief .role-grid{column-gap:12px}
+.simple-brief .competency-inner{justify-content:space-between}
+.spark-process .reading-unit{max-width:100%;white-space:normal!important}
+}
+
+/* Tool logos and centered project overview refinements. */
+.spark-process .tool-category .tool-names{display:flex;flex-wrap:wrap;gap:.55cqw .7cqw;white-space:normal}
+.spark-process .named-tool{display:inline-flex;align-items:center;gap:.35cqw;white-space:nowrap}
+.spark-process .named-tool svg{width:1.65cqw;height:1.65cqw;flex:none;display:block}
+.spark-process .named-tool:first-child svg[viewBox="0 0 18 27"]{width:1.1cqw;margin:0 .275cqw}
+@media(min-width:761px),print{
+.simple-brief{padding-left:5cqw;padding-right:5cqw;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:3cqw}
+.simple-brief .spark-footer{left:5cqw;right:5cqw}
+.simple-brief .competency-inner{gap:2cqw;align-items:center}
+.simple-brief .competency ul{flex:1;min-width:0}
+.simple-brief .competency li{font-size:1.23cqw;line-height:1.4;margin:.65cqw 0}
+.simple-brief .competency li span{font-size:1.08cqw;line-height:1.5;margin-top:.2cqw;white-space:nowrap}
+}
+@media screen and (max-width:760px){
+.spark-process .tool-category .tool-names{gap:7px 10px}
+.spark-process .named-tool{gap:5px}
+.spark-process .named-tool svg{width:22px;height:22px}
+.spark-process .named-tool:first-child svg[viewBox="0 0 18 27"]{width:15px;margin:0 3.5px}
+.simple-brief .competency li{font-size:14px}
+.simple-brief .competency li span{font-size:12px;line-height:1.5}
+}
+
+/* Match the tool heading and close the overview's central whitespace. */
+.spark-process .process-tool-section>h3{color:#111}
+@media(min-width:761px),print{
+.simple-brief{grid-template-columns:minmax(0,40fr) minmax(0,57fr);column-gap:2.5cqw}
+}
+
+/* Equal outer margins; retain the existing overview structure and internal spacing. */
+@media(min-width:761px),print{
+.simple-brief>.brief-left,.simple-brief>.brief-right{position:relative;left:0}
+.simple-brief>.spark-footer{transform:none}
+}
+
+/* Move all first-project content right as one unit, preserving every internal gap. */
+@media(min-width:761px),print{
+#spark.simple-brief>.brief-left,#spark.simple-brief>.brief-right{left:0;transform:translateX(3cqw)}
+#spark.simple-brief>.spark-footer{transform:translateX(3cqw)}
+}
+
+/* Only project-page backgrounds: subtle FC Seoul red/black over the supplied stadium photo. */
+#spark,#spark-process{
+background-color:#fff;
+background-image:linear-gradient(110deg,rgba(174,20,39,.065) 0%,rgba(174,20,39,.025) 38%,rgba(18,18,20,.045) 100%),linear-gradient(rgba(255,255,255,.80),rgba(255,255,255,.80)),url("assets/images/resume-background-02.jpg");
+background-size:cover;background-position:center,center,center 64%;background-repeat:no-repeat;
+}
+
+/* FC Seoul palette, scoped to the two project pages. */
+#spark,#spark-process{--project-red:#c8102e;--project-black:#202020;color:var(--project-black)}
+#spark .brief-left>h2,#spark .brief-left>h2 span,#spark .brief-left>h2 b,
+#spark-process .process-project-title,#spark-process .process-project-title span{color:var(--project-red)}
+#spark h3,#spark h4,#spark-process h3,#spark-process .process-insights h4,
+#spark-process .process-deliverables p>b{color:var(--project-black)}
+#spark .brief-roles article>span,#spark-process .process-insights article>span{color:var(--project-red)}
+#spark .brief-description p,#spark .brief-roles p{color:#555}
+#spark .brief-eyebrow,#spark .recruit-heading>div>span,#spark-process .spark-kicker{color:#686868}
+#spark-process .process-deliverables p span,#spark-process .process-insights p{color:#666}
+#spark-process .process-deliverables p span strong,#spark-process .process-insights p strong{color:#111}
+#spark .competency li b{color:#202020}
+#spark .competency li span{color:#555}
+#spark .competency-donut{background:conic-gradient(#c8102e 0% 25%,#ef6b76 25% 60%,#242424 60% 80%,#8a8a8a 80% 100%);outline:1px solid #20202025;outline-offset:0}
+#spark .competency-donut:before{display:none}
+#spark .spark-footer,#spark-process .spark-footer{color:#686868}
+
+/* Small transparent center and wider spacing for the competency descriptions. */
+#spark .competency-donut{
+-webkit-mask-image:radial-gradient(circle at center,transparent 0 13%,#000 13.6%);
+mask-image:radial-gradient(circle at center,transparent 0 13%,#000 13.6%);
+}
+@media(min-width:761px),print{
+#spark .competency-inner{gap:3.5cqw}
+#spark .competency ul{flex:1;min-width:0}
+#spark .competency li span{white-space:normal;text-wrap:pretty}
+}
+@media screen and (max-width:760px){#spark .competency-inner{gap:26px}}
+
+/* Widen the legend itself and make each role description easier to read. */
+@media(min-width:761px),print{
+#spark .competency-inner{display:grid;grid-template-columns:13cqw minmax(0,1fr);column-gap:4cqw;width:100%;align-items:center}
+#spark .competency ul{width:100%;margin:0;padding:0}
+#spark .competency li{width:100%;font-size:1.3cqw;line-height:1.45;margin:.7cqw 0;padding-left:1.1cqw}
+#spark .competency li span{font-size:1.22cqw;line-height:1.6;letter-spacing:0;white-space:nowrap;margin-top:.3cqw;color:#404040}
+}
+@media screen and (max-width:760px){#spark .competency li span{font-size:13px;line-height:1.6}}
+
+/* Additional projects: isolated styles; approved pages remain unchanged. */
+.project-added{background:#f9fbfd;padding:3.7cqw 5cqw;color:#242b32;--accent:#2862a6;--wash:#eaf0f8}
+.project-added.qlean{--accent:#167d73;--wash:#e7f3ef;background:#f9fcfb}
+.project-added .new-kicker{font-size:.85cqw;letter-spacing:.14em;color:#74818c;margin-bottom:1.2cqw}
+.project-added .new-grid{display:grid;grid-template-columns:1fr 1fr;gap:4cqw}
+.project-added h2{font-size:4.5cqw;line-height:1.12;color:var(--accent);letter-spacing:-.055em;margin:0 0 1.1cqw}
+.project-added .new-subtitle{font-size:1.55cqw;line-height:1.5;margin:0 0 2.2cqw;font-weight:600}
+.project-added h3{display:block;border:0!important;color:#222;font-size:1.5cqw;margin:0 0 .7cqw;padding:0}
+.project-added p{font-size:1.15cqw;line-height:1.8;color:#5e6a73;margin:0}
+.project-added .new-section{margin-top:2cqw}
+.project-added .new-feature{display:grid;grid-template-columns:2.6cqw 1fr;gap:.7cqw;margin-bottom:1.65cqw}
+.project-added .new-feature>span{color:var(--accent);font:700 1.6cqw Arial}
+.project-added h4{font-size:1.35cqw;line-height:1.4;margin:0 0 .35cqw;color:#28333a}
+.project-added .new-feature p{font-size:1.08cqw}
+.project-added .new-flow{background:var(--wash);border-radius:.7cqw;padding:1.5cqw 1.6cqw;margin-top:1.8cqw}
+.project-added .new-flow h3{font-size:1.25cqw}
+.project-added .new-flow p{color:var(--accent);font-size:1.1cqw;font-weight:600}
+.project-added .new-label{font-size:.85cqw;letter-spacing:.1em;color:var(--accent);margin-bottom:1.4cqw}
+.project-added .new-foot{position:absolute;left:5cqw;right:5cqw;bottom:1.4cqw;display:flex;justify-content:space-between;color:#87939b;font-size:.72cqw;letter-spacing:.1em}
+@media screen and (max-width:760px){.project-added{aspect-ratio:auto;padding:30px 22px 65px}.project-added .new-grid{grid-template-columns:1fr;gap:28px}.project-added .new-kicker{font-size:10px;margin-bottom:18px}.project-added h2{font-size:44px;margin-bottom:16px}.project-added .new-subtitle{font-size:20px;margin-bottom:26px}.project-added h3{font-size:19px;margin-bottom:12px}.project-added p,.project-added .new-feature p{font-size:14px}.project-added .new-section{margin-top:26px}.project-added .new-feature{grid-template-columns:30px 1fr;gap:10px;margin-bottom:22px}.project-added .new-feature>span{font-size:21px}.project-added h4{font-size:18px;margin-bottom:7px}.project-added .new-flow{padding:18px;margin-top:22px;border-radius:9px}.project-added .new-flow h3{font-size:17px}.project-added .new-flow p{font-size:14px}.project-added .new-label{font-size:10px;margin-bottom:18px}.project-added .new-foot{left:22px;right:22px;bottom:18px;font-size:9px}}
+
+/* Entrance-app process page follows the supplied five-image reference. */
+.entrance-process{background:#0b0b0d;color:#fff;padding:0;--process-ink:#f7f1d8}
+.entrance-process .ep-collage{position:absolute;left:2.5%;top:0;bottom:0;width:44.5%;display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw}
+.entrance-process .ep-photo-column{display:grid;gap:2.6cqw;min-height:0}
+.entrance-process .ep-photo-column:first-child{grid-template-rows:25cqw 1fr}
+.entrance-process .ep-photo-column:last-child{grid-template-rows:8.3cqw 33.5cqw 1fr}
+.entrance-process figure{margin:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6cqw;min-height:0;background:#1d2025;color:#b5bbc4;border:1px solid #353a42;font-size:1.1cqw}
+.entrance-process figure small{font-size:.75cqw;color:#7e8792}
+.entrance-process .ep-copy{position:absolute;left:50.4%;right:3.7%;top:5.1cqw}
+.entrance-process h2{font-family:Arial,'Malgun Gothic',sans-serif;font-size:3.7cqw;line-height:1.12;letter-spacing:-.06em;margin:0 0 3cqw;color:#fff}
+.entrance-process h2 span{display:block;font-size:2.8cqw;margin-top:.45cqw}
+.entrance-process .ep-columns{display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
+.entrance-process h3{display:block;border:0!important;padding:0;margin:0 0 1.1cqw;font-size:1.25cqw;color:var(--process-ink)}
+.entrance-process .ep-placeholder{border:1px solid #85858a;padding:.85cqw 1cqw;font-size:.95cqw;line-height:1.5;color:#adb1b8;min-height:3.3cqw}
+.entrance-process .ep-insight{margin-top:5.8cqw}
+.entrance-process .ep-insight h3{font-size:1.65cqw;line-height:1.55;max-width:95%}
+.entrance-process .ep-footer{position:absolute;bottom:1.3cqw;left:50.4%;right:3.7%;display:flex;justify-content:space-between;font-size:.7cqw;color:#8c919a;letter-spacing:.08em}
+@media screen and (max-width:760px){.entrance-process{aspect-ratio:auto;padding:30px 22px 60px;display:flex;flex-direction:column;gap:28px}.entrance-process .ep-copy{position:static;order:0}.entrance-process h2{font-size:36px;margin-bottom:28px}.entrance-process h2 span{font-size:28px;margin-top:8px}.entrance-process .ep-columns{gap:18px}.entrance-process h3{font-size:17px;margin-bottom:14px}.entrance-process .ep-placeholder{font-size:12px;padding:12px;min-height:55px}.entrance-process .ep-insight{margin-top:35px}.entrance-process .ep-insight h3{font-size:21px}.entrance-process .ep-collage{position:static;width:100%;order:1;gap:12px}.entrance-process .ep-photo-column{gap:12px}.entrance-process .ep-photo-column:first-child{grid-template-rows:220px 230px}.entrance-process .ep-photo-column:last-child{grid-template-rows:90px 250px 98px}.entrance-process figure{font-size:13px;gap:7px}.entrance-process figure small{font-size:10px}.entrance-process .ep-footer{left:22px;right:22px;bottom:18px;font-size:9px}}
+
+/* Supplied app screens and confirmed project content only. */
+.entrance-process .ep-photo-column:first-child,.entrance-process .ep-photo-column:last-child{grid-template-rows:1fr 1fr}
+.entrance-process .ep-photo-column:last-child{padding-top:2.5cqw;padding-bottom:2.5cqw}
+.entrance-process figure{border:0;background:transparent;overflow:hidden}
+.entrance-process figure img{display:block;width:100%;height:100%;min-height:0;object-fit:contain;object-position:center}
+.entrance-process .ep-detail{display:flex;flex-direction:column;gap:.65cqw;font-size:1.12cqw;line-height:1.5;color:#f1f1f3}
+.entrance-process .ep-detail b{font-size:.9cqw;color:#a7adb8;font-weight:500}
+.entrance-process .ep-insight{margin-top:3.5cqw}
+.entrance-process .ep-insight p{font-size:1.14cqw;line-height:1.85;color:#c4c6cb;margin:1cqw 0 0}
+@media screen and (max-width:760px){.entrance-process .ep-photo-column:first-child,.entrance-process .ep-photo-column:last-child{grid-template-rows:260px 260px}.entrance-process .ep-photo-column:last-child{padding:20px 0}.entrance-process .ep-detail{font-size:14px;gap:9px}.entrance-process .ep-detail b{font-size:12px}.entrance-process .ep-insight{margin-top:30px}.entrance-process .ep-insight p{font-size:14px;line-height:1.8;margin-top:15px}}
+
+/* White and sky-blue redesign limited to the Design Thinking project. */
+.dt-project{background:#fff;color:#253b4b;padding:0}
+.dt-project .dt-left{position:absolute;left:5cqw;top:4.8cqw;width:31cqw}
+.dt-project .dt-kicker{font-size:.85cqw;letter-spacing:.12em;color:#7095ad;margin-bottom:1.4cqw}
+.dt-project h2{font:800 3.5cqw/1.14 Arial,'Malgun Gothic',sans-serif;letter-spacing:-.055em;margin:0 0 2.5cqw;color:#159bd8}
+.dt-project h2 span{font-size:3.2cqw}
+.dt-project h3{display:block;border:0!important;margin:0 0 .7cqw;padding:0;font-size:1.35cqw;color:#23465d}
+.dt-project p{font-size:1.08cqw;line-height:1.85;color:#647c8d;margin:0 0 .85cqw}
+.dt-project .dt-role{margin-top:2cqw}
+.dt-project .dt-tools{margin-top:1.9cqw}
+.dt-project .dt-reference-image{position:absolute;left:39cqw;top:6.5cqw;width:26cqw;height:18.3cqw;overflow:hidden;border-radius:1.2cqw}
+.dt-project .dt-reference-image svg{display:block;width:100%;height:100%}
+.dt-project .dt-competency{position:absolute;top:4cqw;right:4cqw;width:26cqw;height:24cqw;padding:1.1cqw 1.5cqw;background:#eff8fd;border-radius:1.2cqw;display:grid;grid-template-columns:8cqw 1fr;column-gap:1.1cqw;align-content:start}
+.dt-project .dt-competency h3{grid-column:1/-1;font-size:1.4cqw;margin-bottom:1.15cqw}
+.dt-project .dt-donut{width:8cqw;height:8cqw;border-radius:50%;background:conic-gradient(#168fd3 0 25%,#68bbdf 25% 55%,#879daf 55% 90%,#b8d9e8 90% 100%);mask-image:radial-gradient(circle,transparent 0 17%,#000 17.5%);-webkit-mask-image:radial-gradient(circle,transparent 0 17%,#000 17.5%);margin-top:1.6cqw}
+.dt-project .dt-competency ul{list-style:none;padding:0;margin:0}
+.dt-project .dt-competency li{position:relative;padding-left:.8cqw;margin-bottom:.9cqw;font-size:1.02cqw;line-height:1.4}
+.dt-project .dt-competency i{position:absolute;left:0;top:.4cqw;width:.4cqw;height:.4cqw;border-radius:50%}
+.dt-project .dt-competency b{font-weight:700}
+.dt-project .dt-competency li span{display:block;font-size:.83cqw;color:#708696;margin-top:.25cqw;line-height:1.5}
+.dt-project .dt-competency small{grid-column:1/-1;font-size:.65cqw;color:#8b9fab;margin-top:.2cqw}
+.dt-project .dt-screens{position:absolute;left:39cqw;right:4cqw;top:29.5cqw;bottom:4cqw;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1cqw;align-items:center}
+.dt-project .dt-screens figure{margin:0;width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center}
+.dt-project .dt-screens img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:.65cqw;border:1px solid #dfebf2}
+.dt-project .dt-footer{position:absolute;left:5cqw;right:4cqw;bottom:1.3cqw;display:flex;justify-content:space-between;color:#8b9fab;font-size:.72cqw;letter-spacing:.08em}
+@media screen and (max-width:760px){.dt-project{aspect-ratio:auto;padding:28px 22px 60px;display:grid;grid-template-columns:1fr;gap:24px}.dt-project .dt-left,.dt-project .dt-reference-image,.dt-project .dt-competency,.dt-project .dt-screens{position:static;width:100%;height:auto}.dt-project .dt-kicker{font-size:10px;margin-bottom:18px}.dt-project h2{font-size:38px;margin-bottom:25px}.dt-project h2 span{font-size:33px}.dt-project h3{font-size:19px;margin-bottom:10px}.dt-project p{font-size:14px;margin-bottom:12px}.dt-project .dt-role,.dt-project .dt-tools{margin-top:23px}.dt-project .dt-reference-image{aspect-ratio:414/291;max-width:360px;border-radius:14px}.dt-project .dt-competency{grid-template-columns:110px 1fr;gap:14px;padding:20px;border-radius:14px}.dt-project .dt-competency h3{font-size:20px;margin-bottom:10px}.dt-project .dt-donut{width:110px;height:110px;margin-top:20px}.dt-project .dt-competency li{font-size:14px;padding-left:12px;margin-bottom:12px}.dt-project .dt-competency i{width:6px;height:6px;top:6px}.dt-project .dt-competency li span{font-size:12px;margin-top:4px}.dt-project .dt-competency small{font-size:10px}.dt-project .dt-screens{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;align-items:start}.dt-project .dt-screens img{border-radius:5px}.dt-project .dt-footer{left:22px;right:22px;bottom:18px;font-size:9px}}
+
+/* Reference composition; changes scoped to the Design Thinking page. */
+@media(min-width:761px){
+.dt-project .dt-left{left:8.6cqw;top:8.8cqw;width:36cqw}
+.dt-project .dt-kicker{font-size:1cqw;color:#547789;margin-bottom:1.7cqw}
+.dt-project h2{font-family:inherit;font-size:4.35cqw;line-height:1.13;letter-spacing:-.055em;color:#149bdd;margin:0 0 3.5cqw;font-weight:800}
+.dt-project h2 span{font-size:4.35cqw}
+.dt-project .dt-description,.dt-project .dt-role,.dt-project .dt-tools{width:27cqw}
+.dt-project h3{color:#172d3f;font-size:1.35cqw;margin-bottom:.65cqw}
+.dt-project p{color:#40596a;font-size:1.08cqw;line-height:1.7;margin-bottom:.8cqw}
+.dt-project .dt-role{margin-top:1.4cqw}
+.dt-project .dt-tools{margin-top:1.3cqw}
+.dt-project .dt-reference-image{left:50.5cqw;top:6.4cqw;width:26.4cqw;height:18.6cqw;border-radius:1.2cqw}
+.dt-project .dt-competency{left:78.9cqw;right:auto;top:5.9cqw;width:21.1cqw;height:25.9cqw;padding:1.4cqw 2cqw;background:#e3f4fe;display:flex;flex-direction:column;align-items:stretch;gap:0;border-radius:1.2cqw 0 0 1.2cqw}
+.dt-project .dt-competency h3{font-size:1.35cqw;margin:0 0 .8cqw}
+.dt-project .dt-donut{width:9cqw;height:9cqw;flex:none;align-self:center;margin:0 0 1cqw}
+.dt-project .dt-competency li{font-size:.96cqw;margin-bottom:.55cqw;line-height:1.25}
+.dt-project .dt-competency li span{font-size:.72cqw;line-height:1.3;margin-top:.16cqw;color:#40596a}
+.dt-project .dt-competency small{font-size:.57cqw;margin-top:.1cqw;color:#647c8d}
+.dt-project .dt-screens{left:37.4cqw;right:6.7cqw;top:32.6cqw;bottom:6.5cqw;gap:1.25cqw;align-items:end}
+.dt-project .dt-screens figure{align-items:flex-end}
+.dt-project .dt-screens img{border-radius:.6cqw}
+.dt-project .dt-footer{left:8.6cqw;right:6.7cqw;bottom:2.1cqw}
+}
+
+/* Square photo corners on the Design Thinking page. */
+.dt-project .dt-reference-image,.dt-project .dt-screens img{border-radius:0!important}
+
+/* Requested graph legend, two-line summary and edge-cropped app screens. */
+@media(min-width:761px){
+.dt-project .dt-description{width:38cqw}
+.dt-project .dt-description p{font-size:1.02cqw;white-space:nowrap}
+.dt-project .dt-reference-image{left:47cqw;width:24cqw;height:16.9cqw}
+.dt-project .dt-competency{left:73cqw;top:5.9cqw;width:27cqw;height:23cqw;padding:1.4cqw 1.2cqw;display:grid;grid-template-columns:8.5cqw minmax(0,1fr);column-gap:1.1cqw;align-content:start;border-radius:1.2cqw 0 0 1.2cqw}
+.dt-project .dt-competency h3{grid-column:1/-1;margin-bottom:2cqw}
+.dt-project .dt-donut{grid-column:1;width:8.5cqw;height:8.5cqw;margin:1.5cqw 0 0;align-self:start}
+.dt-project .dt-competency ul{grid-column:2;min-width:0}
+.dt-project .dt-competency li{font-size:.98cqw;line-height:1.4;margin-bottom:1cqw}
+.dt-project .dt-competency li span{font-size:.78cqw;line-height:1.5;margin-top:.25cqw}
+.dt-project .dt-screens{left:37.4cqw;right:0;top:31cqw;bottom:0;gap:1cqw;align-items:start;overflow:hidden}
+.dt-project .dt-screens figure{height:100%;align-items:flex-start;overflow:hidden}
+.dt-project .dt-screens img{width:100%;height:auto;max-height:none;max-width:none;min-height:100%;object-fit:cover;object-position:top;border:0;border-radius:0!important}
+.dt-project .dt-footer{right:auto;bottom:1.4cqw;display:block;font-size:.6cqw;max-width:27cqw}
+.dt-project .dt-footer span{display:block;margin-top:.4cqw}
+}
+
+/* Preserve full screenshot width so names remain visible. */
+.dt-project .dt-screens-label{position:absolute;left:37.4cqw;top:29.1cqw;font-size:1.15cqw;line-height:1.4;font-weight:700;color:#172d3f}
+.dt-project .dt-screens figure{border:1.5px solid #7e9bb0;background:#f7f9fc;overflow:hidden;justify-content:flex-start}
+.dt-project .dt-screens img{display:block;width:100%;height:auto;min-height:0;max-height:none;max-width:100%;object-fit:contain;object-position:top left;border:0;border-radius:0!important;flex:none}
+@media screen and (max-width:760px){.dt-project .dt-screens-label{position:static;font-size:16px;margin-bottom:-14px}.dt-project .dt-screens figure{height:auto}}
+
+/* CHECK ON background and iPhone 17 Pro front-view mockups. */
+.dt-project{background-image:linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),url("assets/images/spark-background.png");background-size:cover;background-position:center;background-repeat:no-repeat}
+.dt-project .dt-competency{border-radius:0!important}
+.dt-project .dt-screens{overflow:visible;gap:1.15cqw;padding:.25cqw .4cqw 0}
+.dt-project .dt-screens figure.dt-iphone{position:relative;display:block;width:100%;height:auto;aspect-ratio:71.9/150;min-height:0;padding:.36cqw;border:.14cqw solid #aab0b7;border-radius:2.15cqw;background:linear-gradient(100deg,#e8ebee,#aeb4bc 4%,#f7f8fa 10%,#c4c9cf 90%,#8d949c);box-shadow:0 .4cqw 1.1cqw #15354a24;overflow:visible}
+.dt-project .dt-phone-screen{height:100%;width:100%;background:#f7f9fc;border:.22cqw solid #151719;border-radius:1.7cqw;overflow:hidden;position:relative}
+.dt-project .dt-phone-status{height:1.9cqw;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 1cqw;background:#f7f9fc;color:#16191d;font:600 .5cqw Arial,sans-serif}
+.dt-project .dt-phone-status i{position:absolute;left:50%;top:.45cqw;transform:translateX(-50%);width:3.7cqw;height:.9cqw;border-radius:1cqw;background:#08090b}
+.dt-project .dt-phone-status b{font-size:.65cqw;line-height:1}
+.dt-project .dt-screens .dt-iphone img{display:block;width:100%;height:auto;min-height:0;max-width:100%;max-height:none;border:0;border-radius:0!important;object-fit:contain}
+.dt-project .dt-iphone:after{content:"";position:absolute;right:-.23cqw;top:6.5cqw;height:3.6cqw;width:.18cqw;background:#a0a6ad;border-radius:.12cqw}
+.dt-project .dt-phone-screen:after{content:"";position:absolute;bottom:.45cqw;left:33%;width:34%;height:.25cqw;background:#181b1e;border-radius:1cqw}
+@media screen and (max-width:760px){
+.dt-project .dt-screens{gap:9px;padding:3px}
+.dt-project .dt-screens figure.dt-iphone{padding:3px;border-width:1px;border-radius:15px}
+.dt-project .dt-phone-screen{border-width:2px;border-radius:12px}
+.dt-project .dt-phone-status{height:20px;padding:0 6px;font-size:5px}
+.dt-project .dt-phone-status i{width:27%;height:7px;top:5px;border-radius:6px}
+.dt-project .dt-phone-status b{font-size:6px}
+}
+
+/* Project-specific tools and insights replace the upper placeholder. */
+.dt-project .dt-learning{overflow:visible;border-radius:0;display:grid;grid-template-columns:8.1cqw 1fr;gap:1.1cqw;background:transparent;height:auto}
+.dt-project .dt-learning h3{font-size:1.05cqw;color:#111;margin:0 0 1.15cqw;line-height:1.4}
+.dt-project .dt-learning h4{font-size:.9cqw;line-height:1.5;color:#111;margin:0 0 .45cqw;font-weight:700}
+.dt-project .dt-learning p{font-size:.82cqw;line-height:1.75;color:#40515e;margin:0 0 1.3cqw}
+.dt-project .dt-learning .spark-tools{display:block;font-size:.85cqw}
+.dt-project .dt-learning .tool-category{display:block;margin:0 0 1.1cqw}
+.dt-project .dt-learning .tool-category b{display:block;color:#111;font-size:.85cqw;margin-bottom:.4cqw}
+.dt-project .dt-learning .tool-names{display:flex;flex-wrap:wrap;gap:.45cqw}
+.dt-project .dt-learning .named-tool{display:inline-flex;align-items:center;gap:.25cqw;white-space:nowrap;font-size:.84cqw;color:#222}
+.dt-project .dt-learning .named-tool svg{display:inline-block;width:1.2cqw;height:1.2cqw;flex:none}
+@media screen and (max-width:760px){.dt-project .dt-learning{max-width:none;aspect-ratio:auto;grid-template-columns:1fr 1.5fr;gap:18px}.dt-project .dt-learning h3{font-size:16px;margin-bottom:15px}.dt-project .dt-learning h4{font-size:14px;margin-bottom:6px}.dt-project .dt-learning p{font-size:12px;margin-bottom:16px}.dt-project .dt-learning .tool-category b,.dt-project .dt-learning .named-tool{font-size:12px}.dt-project .dt-learning .tool-category{margin-bottom:16px}.dt-project .dt-learning .named-tool svg{width:18px;height:18px}.dt-project .dt-learning .tool-names{gap:6px}}
+
+/* Larger learning text and screenshots fitted to the phone display. */
+.dt-project .dt-learning h3{font-size:1.2cqw}
+.dt-project .dt-learning h4{font-size:1.04cqw}
+.dt-project .dt-learning p{font-size:.95cqw;line-height:1.65}
+.dt-project .dt-learning .tool-category b{font-size:1cqw;width:auto;min-width:0;max-width:none;white-space:nowrap;word-break:keep-all}
+.dt-project .dt-learning .named-tool{font-size:.98cqw}
+.dt-project .dt-learning .named-tool svg{width:1.4cqw;height:1.4cqw}
+.dt-project .dt-phone-screen{position:absolute;inset:.36cqw;width:auto;height:auto;display:grid;grid-template-rows:1.9cqw minmax(0,1fr);padding-bottom:.8cqw}
+.dt-project .dt-screens .dt-iphone img{width:100%;height:100%;min-height:0;max-height:100%;object-fit:fill;align-self:stretch}
+@media screen and (max-width:760px){
+.dt-project .dt-learning h3{font-size:18px}
+.dt-project .dt-learning h4{font-size:16px}
+.dt-project .dt-learning p{font-size:14px}
+.dt-project .dt-learning .tool-category b,.dt-project .dt-learning .named-tool{font-size:14px}
+.dt-project .dt-learning .named-tool svg{width:20px;height:20px}
+.dt-project .dt-phone-screen{inset:3px;grid-template-rows:20px minmax(0,1fr);padding-bottom:7px}
+}
+
+/* Align tools with the app-screen label and add project insight below role. */
+@media(min-width:761px){.dt-project .dt-reference-image.dt-learning{left:37.4cqw}}
+.dt-project .dt-insight{margin-top:1.8cqw;width:28cqw}
+.dt-project .dt-insight p{font-size:1.02cqw;line-height:1.75}
+@media screen and (max-width:760px){.dt-project .dt-insight{width:100%;margin-top:23px}.dt-project .dt-insight p{font-size:14px}}
+
+@media(min-width:761px){
+.dt-project .dt-reference-image.dt-learning{left:40.85cqw;width:30.15cqw;grid-template-columns:12.4cqw minmax(0,1fr);column-gap:1.1cqw}
+}
+
+/* Prominent project title and approved three-part insights. */
+.dt-project h2{color:#075e97;font-weight:900;text-shadow:none;letter-spacing:-.045em}
+.dt-project h2 span{color:#122f45}
+.dt-project .dt-insight{width:29cqw;margin-top:1.4cqw}
+.dt-project .dt-insight-list{list-style:none;padding:0;margin:0;counter-reset:dt-insight}
+.dt-project .dt-insight-list li{position:relative;padding-left:1.8cqw;margin-bottom:1cqw;counter-increment:dt-insight}
+.dt-project .dt-insight-list li:before{content:counter(dt-insight,decimal-leading-zero);position:absolute;left:0;top:.06cqw;color:#078dce;font-size:1.05cqw;font-weight:800}
+.dt-project .dt-insight-list h4{font-size:1.02cqw;line-height:1.45;color:#142d3f;margin:0 0 .3cqw;font-weight:800}
+.dt-project .dt-insight-list p{font-size:.84cqw;line-height:1.65;margin:0;color:#465a69}
+.dt-project .dt-insight-list strong{color:#172e3f;font-weight:700}
+@media(min-width:761px){.dt-project h2{font-size:4.6cqw;line-height:1.09;margin-bottom:2.4cqw}.dt-project h2 span{font-size:4.35cqw}}
+@media screen and (max-width:760px){.dt-project .dt-insight{width:100%;margin-top:23px}.dt-project .dt-insight-list li{padding-left:28px;margin-bottom:17px}.dt-project .dt-insight-list li:before{font-size:16px;top:1px}.dt-project .dt-insight-list h4{font-size:15px;margin-bottom:6px}.dt-project .dt-insight-list p{font-size:13px}}
+
+</style>
+<!-- CSS 02: Design Thinking 왼쪽 영역 위치 -->
+<style>
+/* Design Thinking 왼쪽 영역 위치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+@media (min-width:761px){.dt-project .dt-left{top:4.4cqw}}
+
+</style>
+
+<!-- CSS 03: 역량 요약 기본 구성 -->
+<style>
+/* 역량 요약 기본 구성
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.page.competencies-summary{display:block;aspect-ratio:16/9;background:#fff;padding:4.4cqw 8.6cqw;color:#17374e;overflow:hidden}
+.competencies-summary *{box-sizing:border-box}
+.cs-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5cqw;border-bottom:1px solid #d9e5ed;padding-bottom:.8cqw}
+.cs-header h2{font:800 4.05cqw/1.05 Arial,sans-serif;letter-spacing:-.045em;color:#159edf;margin:0}
+.cs-header>span{font:900 2cqw Arial;color:#a5d7f3;letter-spacing:-.25cqw}
+.cs-grid{display:grid;grid-template-columns:28% 34% 32%;gap:3%;align-items:start}
+.competencies-summary h3{font-size:1.45cqw;line-height:1.2;color:#17374e;margin:0 0 1.25cqw;padding:0;white-space:nowrap;border:0}
+.cs-strength{height:9.15cqw;background:#f0f8fc;border-radius:.45cqw;margin-bottom:1.05cqw;display:grid;grid-template-columns:2.4cqw 6cqw 1fr;align-items:center;padding:.9cqw;gap:.7cqw}
+.cs-number{font:700 1.8cqw Arial;color:#67b8e3}
+.cs-icon{display:flex;align-items:center;justify-content:center;border-left:1px solid #bfdfef;border-right:1px solid #bfdfef;height:5.3cqw;color:#17658e}
+.cs-icon svg{width:4.2cqw;height:4.2cqw}
+.cs-strength div>span{font-size:1.25cqw;color:#52788f}
+.cs-strength h4{margin:.35cqw 0 0;font-size:2.2cqw;letter-spacing:-.05em;color:#17374e;line-height:1.1}
+.cs-skills{padding-top:2.7cqw;display:flex;flex-direction:column;gap:2.35cqw}
+.cs-skill h4{margin:0 0 .5cqw;font-size:1.35cqw;line-height:1.2;letter-spacing:-.035em}
+.cs-skill h4>span{font-size:.99cqw;font-weight:400;color:#738b9a;letter-spacing:-.025em}
+.cs-meter-row{display:flex;align-items:center;gap:.85cqw}
+.cs-track{height:1.05cqw;flex:1;background:#eaf3f8;border-radius:2cqw;overflow:hidden}
+.cs-fill{display:block;width:var(--value);height:100%;background:linear-gradient(90deg,#66c7ee,#159edf);border-radius:inherit;transform-origin:left}
+.cs-meter-row p{margin:0;font-size:1.1cqw;white-space:nowrap;width:4.1cqw;text-align:right;color:#8598a5}
+.cs-meter-row b{font-size:1.45cqw;color:#0989cf}
+.cs-projects>h3{font-size:1.35cqw;letter-spacing:-.025em}
+.cs-chart{width:21cqw;height:21cqw;position:relative;margin:.3cqw auto 1.1cqw}
+.cs-ring{display:block;width:100%;height:100%;overflow:visible}
+.cs-chart-center{position:absolute;inset:29%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.cs-chart-center strong{font:800 5.2cqw/.98 Arial;color:#159edf}
+.cs-chart-center span{font:700 .95cqw/1.2 Arial;color:#17374e;margin-top:.2cqw}
+.cs-chart-label{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.15cqw;width:6cqw;font:400 .8cqw Arial;color:#17658e}
+.cs-chart-label svg{width:2.4cqw;height:2.4cqw}
+.cs-sports{left:1.55cqw;top:2.8cqw}.cs-planning{right:1.15cqw;top:2.8cqw;color:white}.cs-research{left:1.45cqw;bottom:3cqw;color:white}.cs-technology{right:1.1cqw;bottom:3cqw}
+.cs-projects .cs-activity-title{font-size:1.35cqw;margin-bottom:.8cqw}
+.cs-activities{margin:0;padding:0 0 0 1.7cqw;display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,auto);grid-template-columns:1fr 1fr;column-gap:2.1cqw;row-gap:.37cqw;font-size:.81cqw;line-height:1.35;color:#536f81}
+.cs-activities li{padding-left:.1cqw;break-inside:avoid}
+.cs-activities li::marker{color:#159edf;font-weight:600}
+@media screen and (max-width:760px){.page.competencies-summary{aspect-ratio:16/9;padding:4.4cqw 8.6cqw}.competencies-summary h3{margin-bottom:1.25cqw}.cs-skill h4{font-size:1.35cqw}}
+
+</style>
+
+<!-- CSS 04: 역량 요약 전체 비율 -->
+<style>
+/* 역량 요약 전체 비율
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-header,.competencies-summary .cs-grid{transform:scale(1.09);transform-origin:top left}
+.competencies-summary .cs-header{width:91.74312%;margin-bottom:3.2cqw}
+.competencies-summary .cs-grid{width:100%;grid-template-columns:28% 34% 32%}
+
+</style>
+
+<!-- CSS 05: 활동 목록 기본 글씨 -->
+<style>
+/* 활동 목록 기본 글씨
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-activities{font-size:.94cqw;line-height:1.4;row-gap:.4cqw}
+
+</style>
+
+<!-- CSS 06: 활동 목록 제목과 크기 -->
+<style>
+/* 활동 목록 제목과 크기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-header{margin-left:-3.6cqw}
+.competencies-summary .cs-activities{font-size:1.35cqw;line-height:1.2;row-gap:.3cqw}
+@media screen and (max-width:760px){.competencies-summary .cs-header{margin-left:calc(22px - 8.6cqw)}}
+
+</style>
+
+<!-- CSS 07: 강점 영역 위치 -->
+<style>
+/* 강점 영역 위치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-strengths{position:relative;left:calc(-3.6cqw / 1.09)}
+@media screen and (max-width:760px){.competencies-summary .cs-strengths{left:calc((22px - 8.6cqw) / 1.09)}}
+
+</style>
+
+<!-- CSS 08: 역량 항목 위치 -->
+<style>
+/* 역량 항목 위치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-skills{position:relative;left:-1.2cqw}
+
+</style>
+
+<!-- CSS 09: 역량 요약 상세 배치 -->
+<style>
+/* 역량 요약 상세 배치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Reference coordinates normalized from the supplied 1672 × 941 design. */
+.page.competencies-summary{padding:0;aspect-ratio:1672/941;background:#fff;color:#17374e}
+.competencies-summary .cs-header{position:absolute;left:2.93cqw;top:3.05cqw;width:94.2cqw;height:5.3cqw;margin:0;padding:0;transform:none;border-bottom:1px solid #badff4}
+.cs-header:after{content:"";position:absolute;left:0;bottom:-.15cqw;width:4.7cqw;height:.36cqw;background:linear-gradient(90deg,#159edf,#6ccbf0)}
+.competencies-summary .cs-header h2{font-size:4.55cqw;line-height:1;letter-spacing:-.045em}
+.competencies-summary .cs-header>span{align-self:flex-end;font-size:2.2cqw}
+.competencies-summary .cs-grid{position:absolute;inset:0;width:auto;display:block;transform:none;margin:0;padding:0;pointer-events:none}
+.cs-grid>*{pointer-events:auto}
+.competencies-summary .cs-strengths{position:absolute;left:2.93cqw;top:10.65cqw;width:28.32cqw}
+.competencies-summary .cs-strengths h3{height:2.45cqw;margin:0 0 1.22cqw;font-size:1.85cqw;line-height:1.2;padding:0;position:relative}
+.cs-strengths h3:after{content:"";position:absolute;left:8.3cqw;right:.3cqw;top:1.88cqw;height:1px;background:#86c7ed}
+.competencies-summary .cs-strength{height:10.95cqw;margin:0 0 1.22cqw;padding:0 1.05cqw;gap:0;grid-template-columns:3.9cqw 8.4cqw 1fr;border-radius:.6cqw;background:linear-gradient(135deg,#eff8fd,#f6fbfe 85%,#d7ecfc);border-left:.5cqw solid #d6ecfc}
+.competencies-summary .cs-number{font-size:2.3cqw}
+.competencies-summary .cs-icon{height:6.22cqw;margin-right:1.6cqw;border-color:#92c9eb}
+.competencies-summary .cs-icon svg{width:4.8cqw;height:4.8cqw}
+.competencies-summary .cs-strength div>span{font-size:1.6cqw;line-height:1.3}
+.competencies-summary .cs-strength h4{font-size:2.95cqw;margin:.5cqw 0 0;line-height:1.15}
+.competencies-summary .cs-skills{position:absolute;left:34.39cqw;top:13.25cqw;width:31.22cqw;padding:0;gap:0;display:block}
+.cs-skills:before{content:"";position:absolute;left:-1.67cqw;top:-2.66cqw;width:1px;height:42.46cqw;background:#b6e2f8}
+.competencies-summary .cs-skill{height:6.73cqw;margin:0}
+.competencies-summary .cs-skill h4{font-size:1.65cqw;line-height:1.2;margin:0 0 .57cqw;letter-spacing:-.04em}
+.competencies-summary .cs-skill h4>span{font-size:1.17cqw;letter-spacing:-.025em}
+.competencies-summary .cs-meter-row{gap:1.08cqw}
+.competencies-summary .cs-track{height:1.3cqw;flex:none;width:25.45cqw}
+.competencies-summary .cs-meter-row p{width:4.68cqw;font-size:1.45cqw;line-height:1;margin:0;text-align:right}
+.competencies-summary .cs-meter-row b{font-size:1.78cqw}
+.competencies-summary .cs-projects{position:absolute;left:69.3cqw;top:10.65cqw;width:27.82cqw}
+.cs-projects:before{content:"";position:absolute;left:-2cqw;top:0;width:1px;height:42.46cqw;background:#b6e2f8}
+.competencies-summary .cs-projects>h3{font-size:1.72cqw;line-height:1.2;letter-spacing:-.025em;margin:0;padding:0;white-space:nowrap}
+.competencies-summary .cs-chart{width:23.5cqw;height:23.2cqw;margin:1.3cqw auto .55cqw}
+.competencies-summary .cs-chart-center strong{font-size:6.1cqw}
+.competencies-summary .cs-chart-center span{font-size:1.1cqw;line-height:1.2}
+.competencies-summary .cs-chart-label{width:6.8cqw;font-size:.95cqw;gap:.3cqw}
+.competencies-summary .cs-chart-label svg{width:2.7cqw;height:2.7cqw}
+.competencies-summary .cs-sports{left:1.45cqw;top:3.2cqw}.competencies-summary .cs-planning{right:1.2cqw;top:3.2cqw}
+.competencies-summary .cs-research{left:1.5cqw;bottom:4.3cqw}.competencies-summary .cs-technology{right:1.2cqw;bottom:4.3cqw}
+.competencies-summary .cs-projects .cs-activity-title{font-size:1.65cqw;position:absolute;top:26.85cqw;left:0;margin:0;transform:none;line-height:1.2}
+.cs-activity-title:after{content:"";position:absolute;left:11.7cqw;top:1.15cqw;width:16.1cqw;height:1px;background:#86c7ed}
+.competencies-summary .cs-activities{position:absolute;top:29.25cqw;left:0;width:27.82cqw;height:13.1cqw;display:block;columns:2;column-gap:2.3cqw;padding:0 0 0 2.3cqw;margin:0;font-size:1.08cqw;line-height:1.4;transform:none;letter-spacing:-.04em}
+.competencies-summary .cs-activities li{margin:0 0 .3cqw;padding:0;break-inside:avoid}
+.competencies-summary .cs-activities li:nth-child(8){break-before:column}
+
+</style>
+
+<!-- CSS 10: 활동 목록 2열 배치 -->
+<style>
+/* 활동 목록 2열 배치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-header h2{font-size:4.6cqw}
+.competencies-summary .cs-activities{display:grid;grid-template-columns:1fr 1fr;gap:2.3cqw;columns:auto;padding-left:0;height:auto}
+.competencies-summary .cs-activity-column{margin:0;padding:0 0 0 2.3cqw;min-width:0}
+.competencies-summary .cs-activity-column li{break-before:auto!important;break-inside:avoid;margin-bottom:.3cqw}
+
+</style>
+
+<!-- CSS 11: 활동 목록 행 구성 -->
+<style>
+/* 활동 목록 행 구성
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.competencies-summary .cs-activity-column{display:grid;grid-template-rows:repeat(9,minmax(1.5cqw,auto));align-content:start}
+.competencies-summary .cs-activity-column li{margin:0;align-self:start}
+.competencies-summary #strength-observe{height:8.9cqw;margin-bottom:3.27cqw}
+
+</style>
+
+<!-- CSS 12: 활동 목록 위치 보정 -->
+<style>
+/* 활동 목록 위치 보정
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-activity-layout-fixed{position:absolute;top:29.25cqw;left:0;width:27.82cqw;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;grid-auto-flow:row;gap:1.35cqw;font-size:1.08cqw;line-height:1.4;color:#536f81;letter-spacing:-.04em}
+#competencies-summary .cs-activity-list-fixed{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(9,minmax(1.5cqw,auto));grid-auto-flow:row;align-content:start;margin:0;padding:0 0 0 1.85cqw;min-width:0;list-style:decimal outside}
+#competencies-summary .cs-activity-list-fixed li{margin:0;padding:0;break-before:auto;break-inside:avoid;align-self:start}
+#competencies-summary .cs-activity-list-fixed li::marker{color:#159edf;font-weight:600}
+#competencies-summary #strength-observe{height:7.8cqw;min-height:0;margin-bottom:4.37cqw;width:26.8cqw}
+#competencies-summary #strength-observe .cs-icon{height:5.2cqw}
+
+</style>
+
+<!-- CSS 13: 강점 카드 크기 -->
+<style>
+/* 강점 카드 크기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-strength,
+#competencies-summary #strength-observe{width:26.8cqw;height:7.8cqw;min-height:0;margin-bottom:4.37cqw}
+#competencies-summary .cs-strength .cs-icon{height:5.2cqw}
+#competencies-summary .cs-chart{transform:scale(.69);transform-origin:top center}
+
+</style>
+
+<!-- CSS 14: 활동 목록 제목 위치 -->
+<style>
+/* 활동 목록 제목 위치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-projects .cs-activity-title{top:20.2cqw}
+#competencies-summary .cs-activity-layout-fixed{top:22.6cqw;font-size:1.6cqw;line-height:1.12;letter-spacing:-.055em;gap:.8cqw}
+#competencies-summary .cs-activity-list-fixed{grid-template-rows:none;grid-auto-rows:auto;row-gap:.2cqw;padding-left:1.75cqw}
+#competencies-summary .cs-activity-list-fixed li{margin:0;overflow-wrap:anywhere;word-break:normal}
+
+</style>
+
+<!-- CSS 15: 활동명 줄바꿈 -->
+<style>
+/* 활동명 줄바꿈
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-activity-layout-fixed{font-size:1.15cqw;line-height:1.4;letter-spacing:-.04em}
+#competencies-summary .cs-activity-list-fixed li{word-break:keep-all;overflow-wrap:break-word}
+
+</style>
+
+<!-- CSS 16: 강점 카드 세로 간격 -->
+<style>
+/* 강점 카드 세로 간격
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-strength,#competencies-summary #strength-observe{width:26.8cqw;height:3.65cqw;min-height:0;margin-bottom:.45cqw;grid-template-columns:3.2cqw 5.5cqw 1fr;padding:0 .8cqw}
+#competencies-summary .cs-strength .cs-icon{height:2.8cqw;margin-right:1.1cqw}
+#competencies-summary .cs-strength .cs-icon svg{width:2.7cqw;height:2.7cqw}
+#competencies-summary .cs-strength .cs-number{font-size:1.55cqw}
+#competencies-summary .cs-strength div>span{font-size:1.05cqw}
+#competencies-summary .cs-strength h4{font-size:1.8cqw;margin:.12cqw 0 0;line-height:1.1}
+#competencies-summary .cs-motion{position:absolute;left:2.93cqw;top:28cqw;width:26.8cqw;height:24.4cqw;margin:0;color:#17658e}
+.cs-motion figcaption{font-size:.85cqw;letter-spacing:.12em;color:#7190a4;display:flex;justify-content:space-between}
+.cs-motion figcaption span{letter-spacing:0;color:#8ba2b1;font-size:.72cqw}
+.cs-motion svg{display:block;width:100%;height:22cqw}
+
+</style>
+
+<!-- CSS 17: 강점 문구 한 줄 정렬 -->
+<style>
+/* 강점 문구 한 줄 정렬
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-strength{align-items:center;overflow:hidden}
+#competencies-summary .cs-strength>div{display:flex;align-items:baseline;gap:.65cqw;min-width:0;white-space:nowrap}
+#competencies-summary .cs-strength div>span{font-size:1.05cqw;line-height:1.2;flex:none}
+#competencies-summary .cs-strength h4{font-size:1.8cqw;line-height:1.2;margin:0;white-space:nowrap}
+#competencies-summary .cs-bone-decoration{position:absolute;left:11cqw;top:30cqw;width:10.6cqw;height:21.2cqw;margin:0;opacity:.85}
+.cs-bone-decoration svg{display:block;width:100%;height:100%}
+
+</style>
+
+<!-- CSS 18: 활동 목록 줄 간격 -->
+<style>
+/* 활동 목록 줄 간격
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-activity-list-fixed{row-gap:.42cqw}
+#competencies-summary .cs-activity-list-fixed li{word-break:keep-all;overflow-wrap:normal;line-height:1.4}
+
+</style>
+<!-- CSS 19: 강점 아이콘 중앙 정렬 -->
+<style>
+/* 강점 아이콘 중앙 정렬
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Requested summary alignment refinements */
+#competencies-summary .cs-strengths h3:after{left:15.8cqw}
+#competencies-summary .cs-strength .cs-icon{margin:0;display:flex;align-items:center;justify-content:center;justify-self:stretch;align-self:center;height:2.8cqw}
+#competencies-summary .cs-strength .cs-icon svg{display:block;flex:none;margin:0}
+#competencies-summary .cs-activity-layout-fixed{align-items:stretch}
+#competencies-summary .cs-activity-list-fixed{height:18.7cqw;align-content:space-between;row-gap:0;grid-auto-rows:max-content}
+#competencies-summary .cs-activity-list-fixed li{line-height:1.4;white-space:nowrap}
+#competencies-summary .cs-bone-decoration{left:10.3cqw;top:29.6cqw;width:12cqw;height:22cqw;opacity:1}
+#competencies-summary .cs-bone-decoration img{display:block;width:100%;height:100%;object-fit:contain}
+
+</style>
+<!-- CSS 20: 강점 글씨 색상과 굵기 -->
+<style>
+/* 강점 글씨 색상과 굵기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Strength cards: consistent vertical centers and calmer text hierarchy. */
+#competencies-summary .cs-strength{align-items:center}
+#competencies-summary .cs-strength .cs-number{display:flex;align-items:center;justify-content:center;align-self:center;height:2.8cqw;line-height:1;margin:0;padding:0}
+#competencies-summary .cs-strength .cs-icon,
+#competencies-summary #strength-observe .cs-icon,
+#competencies-summary #strength-execute .cs-icon,
+#competencies-summary #strength-communicate .cs-icon{height:2.8cqw;margin:0;padding:0;align-self:center;display:flex;align-items:center;justify-content:center}
+#competencies-summary .cs-strength>div{align-self:center;align-items:center;box-sizing:border-box;padding-left:.8cqw;gap:.65cqw;height:2.8cqw}
+#competencies-summary .cs-strength div>span{line-height:1.2;margin:0}
+#competencies-summary .cs-strength h4{font-weight:500;color:#52788f;line-height:1.2;margin:0}
+
+</style>
+<!-- CSS 21: 역량 제목 글씨 -->
+<style>
+/* 역량 제목 글씨
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-bone-decoration{left:8.8cqw;top:27.8cqw;width:15cqw;height:26.2cqw;opacity:.65}
+#competencies-summary .cs-skill h4{font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:500;letter-spacing:-.025em;color:#52788f}
+#competencies-summary .cs-skill h4>span{font-weight:400}
+
+</style>
+<!-- CSS 22: 원그래프 이동 · 활동 목록 한 열 배치 -->
+<style>
+/* 원그래프 이동 · 활동 목록 한 열 배치
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-relocated-chart{position:absolute;left:2.93cqw;top:28.5cqw;width:28.32cqw;pointer-events:auto}
+#competencies-summary .cs-relocated-chart>h3{margin:0;text-align:center;font-size:1.45cqw;font-weight:600;line-height:1.2;color:#17374e}
+#competencies-summary .cs-relocated-chart .cs-chart{margin:1.2cqw auto 0;transform:scale(.88);transform-origin:top center}
+#competencies-summary .cs-projects .cs-activity-title{top:0;font-size:1.65cqw}
+#competencies-summary .cs-activity-layout-fixed{top:3.1cqw;display:block;width:27.82cqw;font-size:1.15cqw;letter-spacing:-.025em}
+#competencies-summary .cs-activity-list-fixed{height:39.2cqw;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(13,1fr);align-content:stretch;gap:0;padding-left:1.85cqw}
+#competencies-summary .cs-activity-list-fixed li{align-self:center;white-space:normal;word-break:keep-all;line-height:1.4;padding:.3cqw 0}
+
+</style>
+<!-- CSS 23: 활동 목록과 경력 스킬 크기 -->
+<style>
+/* 활동 목록과 경력 스킬 크기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#competencies-summary .cs-activity-layout-fixed{font-size:1.78cqw;line-height:1.15}
+#competencies-summary .cs-activity-list-fixed{height:40cqw;grid-template-rows:repeat(13,minmax(max-content,1fr));padding-left:2.5cqw}
+#competencies-summary .cs-activity-list-fixed li{line-height:1.15;padding:0;letter-spacing:-.04em}
+#competencies-summary .cs-chart-label{width:6.8cqw;font-size:.85cqw;gap:.15cqw;transform:translate(-50%,-50%)}
+#competencies-summary .cs-chart-label svg{width:2.35cqw;height:2.35cqw}
+#competencies-summary .cs-chart .cs-sports{left:25%;top:25%;right:auto;bottom:auto}
+#competencies-summary .cs-chart .cs-planning{left:75%;top:25%;right:auto;bottom:auto}
+#competencies-summary .cs-chart .cs-research{left:25%;top:75%;right:auto;bottom:auto}
+#competencies-summary .cs-chart .cs-technology{left:75%;top:75%;right:auto;bottom:auto}
+#profile .editorial-traits{transform:translateY(var(--traits-offset,0px))}
+#profile .tool-chip,#profile .tool-title,#profile .sport-list{font-size:var(--profile-skill-size,1.1cqw)}
+
+</style>
+<!-- CSS 24: 경력 페이지 글씨 통일 -->
+<style>
+/* 경력 페이지 글씨 통일
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Profile typography matches its introductory sentence. */
+#profile{--profile-unified-size:1.43cqw}
+#profile .editorial-person h1,#profile .editorial-person>p,
+#profile .editorial-contact,#profile .editorial-contact a,#profile .editorial-contact>span,
+#profile .editorial-traits>span,#profile .editorial-traits p,
+#profile .editorial-intro p,#profile .editorial-block h3,
+#profile .editorial-block .item,#profile .editorial-block .item b,
+#profile .editorial-block .meta,#profile .editorial-block .grade,
+#profile .editorial-block .activity li,#profile .editorial-block .tool-title,
+#profile .editorial-block .tool-chip{font-size:var(--profile-unified-size)}
+#profile .editorial-block h3{color:#14658f}
+@media screen and (max-width:760px){#profile{--profile-unified-size:18px}}
+
+</style>
+<!-- CSS 25: 경력 항목 기본 여백 -->
+<style>
+/* 경력 항목 기본 여백
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#profile .editorial-grid{column-gap:2cqw;row-gap:0}
+#profile .profile-column{display:flex;flex-direction:column;gap:1.1cqw;min-width:0}
+#profile .profile-column:first-child{gap:0}
+#profile .editorial-intro{min-height:9.5cqw;padding-top:1.4cqw}
+#profile .editorial-block h3{margin-bottom:.65cqw;line-height:1.2}
+#profile .editorial-block .item,#profile .editorial-block .activity li{line-height:1.3;margin-bottom:.5cqw}
+#profile .editorial-block .meta{line-height:1.3;margin-top:.1cqw}
+#profile .editorial-traits{transform:none;margin-top:.65cqw}
+#profile .editorial-traits p{line-height:1.3;margin:.15cqw 0 .45cqw}
+#profile .editorial-contact{line-height:1.3}
+#profile .editorial-contact a,#profile .editorial-contact>span{margin-bottom:.2cqw}
+#profile .editorial-person>p{line-height:1.3;margin-bottom:.6cqw}
+#profile .editorial-block .tool-list{row-gap:.3cqw;column-gap:.55cqw;margin-bottom:.35cqw}
+#profile .editorial-block .tool-chip{line-height:1.3}
+@media screen and (max-width:760px){#profile .editorial-grid{grid-template-columns:1fr;gap:20px}#profile .profile-column{gap:16px}#profile .profile-column:first-child{gap:10px}#profile .editorial-intro{min-height:0;padding:20px 0}}
+
+</style>
+<!-- CSS 26: 경력 항목 간격 -->
+<style>
+/* 경력 항목 간격
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Match the Campus Lab role-heading spacing. */
+#profile .profile-column,#profile .profile-column:first-child{gap:1.2cqw}
+#profile .editorial-block h3{margin-bottom:1.2cqw}
+#profile .editorial-traits p{margin-bottom:1.2cqw}
+@media screen and (max-width:760px){#profile .profile-column,#profile .profile-column:first-child{gap:18px}#profile .editorial-block h3{margin-bottom:18px}#profile .editorial-traits p{margin-bottom:18px}}
+
+</style>
+<!-- CSS 27: 표지·경력 슬로건 크기 -->
+<style>
+/* 표지·경력 슬로건 크기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#cover .hero-lead{font-size:2.8cqw;line-height:1.3;white-space:nowrap;font-weight:500}
+#profile .editorial-intro p{font-size:2.5cqw;line-height:1.3;font-weight:600}
+/* Same 1.2cqw gap used between interests and strengths. */
+#profile .profile-column:first-child{gap:1.2cqw}
+#profile .profile-column:first-child>.editorial-block:first-child>.item:last-child{margin-bottom:0}
+@media screen and (max-width:760px){#profile .editorial-intro p{font-size:26px}#profile .profile-column:first-child{gap:18px}}
+
+</style>
+<!-- CSS 28: PDF 인쇄 전용 16:9 구성 -->
+<style>
+/* PDF 인쇄 전용 16:9 구성
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Print uses the desktop slide composition, independent of preview width. */
+@page{size:1920px 1080px;margin:0}
+@media print{
+html,body{width:1920px!important;margin:0!important;padding:0!important;background:#fff!important}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+.toolbar,.hero-link{display:none!important}
+main{display:block!important;width:1920px!important;max-width:none!important;margin:0!important;padding:0!important}
+main>.page{width:1920px!important;height:1080px!important;min-height:1080px!important;max-height:1080px!important;aspect-ratio:16/9!important;box-sizing:border-box!important;margin:0!important;box-shadow:none!important;overflow:hidden!important;break-inside:avoid!important;page-break-inside:avoid!important;break-after:page!important;page-break-after:always!important;container-type:inline-size}
+main>.page:last-child{break-after:auto!important;page-break-after:auto!important}
+}
+
+</style>
+<!-- CSS 29: 마지막 THANK YOU 명함 페이지 -->
+<style>
+/* 마지막 THANK YOU 명함 페이지
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+.contact-finale{background:#f8fcff;color:#17374e;display:flex;align-items:center;justify-content:center;text-align:center}
+.contact-finale:before{content:"";position:absolute;inset:3cqw;border:1px solid #d5e9f5;pointer-events:none}
+.contact-finale:after{content:"";position:absolute;right:-8cqw;top:-17cqw;width:49cqw;height:49cqw;border:5cqw solid #eaf6fd;border-radius:50%;pointer-events:none}
+.contact-finale .finale-content{position:relative;z-index:1;width:80%;}
+.contact-finale .finale-kicker{font-size:1cqw;letter-spacing:.3em;color:#52788f;margin:0 0 2cqw}
+.contact-finale h2{font-family:Arial,sans-serif;font-size:9.2cqw;line-height:1;font-weight:800;letter-spacing:-.055em;color:#159edf;margin:0 0 2.3cqw}
+.contact-finale .finale-slogan{font-size:2.5cqw;line-height:1.4;font-weight:500;letter-spacing:-.035em;margin:0 0 3cqw}
+.contact-finale .finale-slogan strong{color:#0989cf;font-weight:700}
+.contact-finale .finale-name{font-size:1.6cqw;font-weight:600;margin:0 0 1.4cqw}
+.contact-finale .finale-contacts{display:flex;justify-content:center;align-items:center;gap:2.3cqw;font-size:1.35cqw;line-height:1.5}
+.contact-finale .finale-contacts>div{display:flex;align-items:center;gap:.75cqw}
+.contact-finale .finale-contacts span{font-size:.9cqw;letter-spacing:.12em;color:#7296aa}
+.contact-finale .finale-contacts a{color:#36596e;text-decoration:none}
+.contact-finale .finale-phone{color:#7296aa;font-weight:400}
+.contact-finale .finale-foot{position:absolute;bottom:5cqw;left:0;right:0;font-size:.85cqw;letter-spacing:.2em;color:#7296aa}
+
+</style>
+<!-- CSS 30: 표지 배경 대비와 이름 가독성 -->
+<style>
+/* 표지 배경 대비와 이름 가독성
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Cover legibility on the new motion-capture laboratory photograph. */
+#cover .cover-shade{background:linear-gradient(90deg,rgba(255,255,255,.38) 0%,rgba(255,255,255,.18) 54%,rgba(255,255,255,.03) 100%)}
+#cover .hero h1{color:#14364e;-webkit-text-stroke:0;text-shadow:none;font-weight:800}
+#cover .hero h1 span{color:#0989cf;-webkit-text-stroke:0;text-shadow:none;font-weight:800}
+#cover .hero-lead{color:#274a62}
+#contact .finale-phone{color:#36596e}
+@media print{#cover .hero h1,#cover .hero h1 span{-webkit-text-stroke:0!important;text-shadow:none!important}}
+
+</style>
+<!-- CSS 31: 표지 이름 전체 색상 통일 -->
+<style>
+/* 표지 이름 전체 색상 통일
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+#cover .hero h1,#cover .hero h1 span{color:#14364e;-webkit-text-stroke:0;text-shadow:none}
+
+</style>
+<!-- CSS 32: 등장 애니메이션 · 그래프 · 역량 강조 효과 -->
+<style>
+/* 등장 애니메이션 · 그래프 · 역량 강조 효과
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+@keyframes name-emphasis{0%{opacity:.3;filter:blur(4px);transform:translateY(12px)}100%{opacity:1;filter:blur(0);transform:translateY(0)}}
+#cover .hero h1{animation:name-emphasis 1s ease-out both;transition:filter .25s,color .25s}
+#cover .hero h1:hover,#cover .hero h1:hover span{color:#0989cf;filter:drop-shadow(0 3px 8px #159edf35)}
+.project-interactive-donut{overflow:visible!important;mask-image:none!important;-webkit-mask-image:none!important;background:none!important;outline:none!important;position:relative}
+.project-interactive-donut:before{display:none!important}
+.project-interactive-donut svg{display:block;width:100%;height:100%;overflow:visible}
+.project-interactive-donut path{transform-origin:100px 100px;transition:transform .22s,filter .22s,opacity .22s;cursor:pointer;outline:none}
+.project-interactive-donut path.segment-active{transform:scale(1.075);filter:brightness(1.12) drop-shadow(0 2px 3px #17374e40)}
+.project-interactive-donut path.segment-muted{opacity:.4}
+#spark .competency li,#entrance-app-process .dt-competency li{transition:background .2s,transform .2s;cursor:pointer;outline-offset:3px}
+#spark .competency li.segment-active{background:#fff0f2;transform:translateX(.25cqw)}
+#entrance-app-process .dt-competency li.segment-active{background:#dff3ff;transform:translateX(.25cqw)}
+#spark .competency li.segment-active b,#spark .competency li.segment-active span{color:#bd1230;font-weight:800}
+#entrance-app-process .dt-competency li.segment-active b,#entrance-app-process .dt-competency li.segment-active span{color:#007bbf;font-weight:800}
+#competencies-summary .cs-skill{cursor:pointer;outline-offset:4px}
+#competencies-summary .cs-skill.evidence-active h4,#competencies-summary .cs-skill.evidence-active h4 span{color:#0087c7;font-weight:800}
+#competencies-summary .cs-skill.evidence-active .cs-fill{filter:brightness(1.12)}
+#competencies-summary .cs-activity-list-fixed li{transition:color .2s,background .2s;font-synthesis:weight}
+#competencies-summary .cs-activity-list-fixed li.evidence-match{color:#007bbf;font-weight:800;background:#e6f5ff;border-radius:.2cqw}
+#competencies-summary .cs-activity-list-fixed li.evidence-muted{opacity:.42}
+.chart-hover-target{cursor:help;outline:none;pointer-events:all}
+.chart-hover-target:hover,.chart-hover-target:focus{fill:#8f001b;text-shadow:0 0 5px #fff}
+.portfolio-tooltip{position:fixed;z-index:9999;max-width:300px;padding:12px 15px;border-radius:8px;background:#17374e;color:#fff;font:14px/1.55 Arial,"Malgun Gothic",sans-serif;box-shadow:0 5px 20px #17374e30;pointer-events:none;white-space:pre-line}
+.portfolio-tooltip[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){#cover .hero h1{animation:none}.project-interactive-donut path,#spark .competency li,#entrance-app-process .dt-competency li{transition:none}}
+@media print{#cover .hero h1{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}.portfolio-tooltip{display:none!important}.project-interactive-donut path{transform:none!important;filter:none!important;opacity:1!important}#competencies-summary .cs-activity-list-fixed li{opacity:1!important;color:#536f81!important;background:none!important;font-weight:400!important}}
+
+</style>
+<!-- CSS 33: 활동 목록 기본 크기와 강조 크기 -->
+<style>
+/* 활동 목록 기본 크기와 강조 크기
+   같은 선택자가 반복되면 아래쪽 규칙이 우선합니다. 순서를 유지하세요. */
+
+/* Activity labels match the English competency caption until highlighted. */
+#competencies-summary .cs-activity-layout-fixed{font-size:1.17cqw}
+#competencies-summary .cs-activity-list-fixed li{font-size:1.17cqw;line-height:1.35;font-weight:400;transform-origin:left center;transition:font-size .22s ease,color .22s ease,background .22s ease,opacity .22s ease}
+#competencies-summary .cs-activity-list-fixed li.evidence-match{font-size:1.55cqw;color:#007bbf;font-weight:800;background:#e6f5ff;opacity:1}
+@media(prefers-reduced-motion:reduce){#competencies-summary .cs-activity-list-fixed li{transition:none}}
+@media print{#competencies-summary .cs-activity-list-fixed li{font-size:1.17cqw!important}}
+
+</style>
+</head><body>
+<!-- 상단 고정 메뉴: 이동 링크와 PDF 저장 / 인쇄 버튼 -->
+<header class="toolbar"><a class="brand" href="#cover">PARK CHAE WON</a><nav aria-label="페이지 이동"><a href="#cover">표지</a><a href="#profile">프로필 · 이력</a><a href="#spark">프로젝트</a><button onclick="window.print()">PDF 저장 / 인쇄</button></nav></header>
+<main>
+<!-- ========== 01 표지: 이름·슬로건·배경 사진 ========== -->
+<section class="page cover" id="cover" aria-label="포트폴리오 표지"><img class="cover-bg" src="assets/images/cover-background.png" alt="사람 없이 모션캡처 카메라와 데이터 모니터만 배치한 AI 생성 실험실 배경"><div class="cover-shade"></div><div class="data-orbit" aria-hidden="true"><span></span><span></span><span></span><i>?</i><b>!</b></div><div class="chevrons" aria-hidden="true">❯❯❯❯❯</div><div class="hero"><div class="dots" aria-hidden="true">● ● ● ● · · · ·</div><p class="hero-lead"><b>WHY</b>에서 시작해, <b>HOW</b>로 증명합니다</p><div class="portfolio-label">PORTFOLIO</div><h1>PARK <span>CHAE WON</span></h1><a class="hero-link" href="#profile">프로필 · 이력 보기 ↗</a></div><div class="cover-foot">SPORTS · DATA · TECHNOLOGY</div></section>
+
+<!-- ========== 02 프로필·경력: 학력·자격증·스킬·활동·장학금 ========== -->
+<section class="page editorial" id="profile" aria-label="박채원 학력 경력 활동"><aside class="editorial-person"><img class="portrait" src="assets/images/profile-portrait.jpg" alt="박채원 프로필 사진"><h1>박채원</h1><p>서경대학교<br>스포츠앤테크놀로지학과</p><div class="editorial-contact"><a href="mailto:won707105@skuniv.ac.kr">won707105@skuniv.ac.kr</a><a href="https://www.instagram.com/mini_won47/" target="_blank" rel="noopener noreferrer">Instagram · Mini_won47</a></div><div class="editorial-traits"><span>관심 분야</span><p>#데이터분석 #운동역학<br>#스포츠테크</p><span>강점</span><p>#섬세함 #배려 #실행력 #성실</p><span>희망 직무</span><p>연구 · 데이터 분석<br><span id="profile-content-role">컨텐츠 기획</span></p></div></aside><div class="editorial-main"><header class="editorial-intro"><p>WHY에서 시작해, HOW로 증명합니다</p></header><div class="editorial-grid"><div class="profile-column"><section class="editorial-block"><h3>EDUCATION</h3><div class="item"><b>서경대학교 스포츠앤테크놀로지학과</b><span class="meta">학점 <span class="grade">4.2 / 4.5</span></span></div></section><section class="editorial-block"><h3>CERTIFICATE</h3><ul class="activity"><li>생활스포츠지도자 2급 (보디빌딩)</li><li>FISAF 국제 퍼스널 트레이너 1급 자격증</li><li>춘계 학술 세미나 참여<span class="meta">운동역학연구: Python 기반 3D 동작분석 실습<br>2025.04</span></li></ul></section></div><div class="profile-column"><section class="editorial-block"><h3>WORK EXPERIENCE</h3><div class="item"><b>위너스체대입시학원 노원점</b><span class="meta">메인강사 · 2024.03 ~ 현재 재직중</span></div><div class="item"><b>휘트니스피플 이수점</b><span class="meta">트레이너 · 2025.07 ~ 2025.12</span></div></section><section class="editorial-block"><h3>SKILLS</h3><div class="tool-title">프로그램 · AI</div><div class="tool-list"><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#1674cb;--ink:#fff">한</span>한글</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#107f66;--ink:#fff">◎</span>챗GPT</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#496bd6;--ink:#fff">✦</span>제미나이</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#f1f3f4;--ink:#4285f4">G</span>Google Apps Studio</span></div><div class="tool-title">데이터 분석</div><div class="tool-list"><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#3776ab;--ink:#fff">Py</span>파이썬</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#e3c52a;--ink:#151515">3D</span>비쥬얼 3D</span></div><div class="tool-title">영상 · 디자인</div><div class="tool-list"><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#f4f4f4;--ink:#111">✂</span>CapCut</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#252a2e;--ink:#fff"><svg viewBox="0 0 18 27" xmlns="http://www.w3.org/2000/svg"><path fill="#f24e1e" d="M4.5 0h4.5v9H4.5a4.5 4.5 0 0 1 0-9"/><path fill="#ff7262" d="M9 0h4.5a4.5 4.5 0 0 1 0 9H9"/><path fill="#a259ff" d="M4.5 9H9v9H4.5a4.5 4.5 0 0 1 0-9"/><circle fill="#1abcfe" cx="13.5" cy="13.5" r="4.5"/><path fill="#0acf83" d="M4.5 18H9v4.5A4.5 4.5 0 1 1 4.5 18"/></svg></span>Figma</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#08aabd;--ink:#fff">C</span>Canva</span><span class="tool-chip"><span class="tool-icon" aria-hidden="true" style="--icon:#6e50d3;--ink:#fff">M</span>미리캔버스</span></div></section></div><div class="profile-column"><section class="editorial-block"><h3>ACTIVITIES</h3><ul class="activity"><li>스포츠의학동아리 RE:fit</li><li>스포츠마케팅동아리 SPARK</li><li>moty V의 모드 효과 비교 연구</li><li>성동구 복지관 체력측정평가 도우미 봉사활동</li><li>서경대 창의산학교육원 서포터즈 1기, 2기</li></ul></section><section class="editorial-block"><h3>SCHOLARSHIPS</h3><div class="item"><b>예술체육비전장학금 지원 I</b><span class="meta">등록금전형 · 2026년 1학기</span></div><div class="item"><b>서울희망진로장학금</b><span class="meta">2025년 2학기</span></div><div class="item"><b>노원교육복지재단 대학생장학금</b><span class="meta">2026년도</span></div><div class="item"><b id="profile-scholarship-anchor">심명문화재단 생활비 장학금</b><span class="meta">2026년도</span></div></section></div></div></div></section>
+<!-- ========== 03 SPARK 캠퍼스랩: 개요·나의 역할·신청 그래프 ========== -->
+<section class="page spark brief simple-brief" id="spark" aria-label="SPARK X FC서울 캠퍼스랩"><div class="brief-left"><div class="brief-eyebrow">PROJECT 01 / #콘텐츠 기획</div><h2>SPARK <span>X FC서울</span><b>캠퍼스랩</b></h2><section class="brief-description"><h3>프로젝트 설명</h3><p>FC서울 홈경기에 대한 2030세대의 관심·관람 참여를 높이고,<br>대학생·외국인 등 신규 관중 유입 전략을 기획합니다.</p></section><section class="brief-roles"><h3>나의 역할</h3><div class="role-grid"><article><span>과제 1 · 09/05 대학생 모객</span><h4>신청·홍보 운영</h4><p>구글폼 제작 · 자금 관리<br>홍보 영상 제작</p></article><article><span>프로젝트 · 10/02 경쟁 PT</span><h4>설문·자료조사</h4><p>QR 설문지 제작<br>예산·4P 자료조사</p></article><article><span>과제 2 · 11월 모객 준비</span><h4>프로젝트 기획</h4><p>신청폼 제작 · 프로젝트 계획<br>단체 회의 내용 설정</p></article></div></section></div><div class="brief-right"><header class="recruit-heading"><div><span>9/5 홈경기 모객</span><h3>관람 신청 추이</h3></div></header><div class="chart-with-total"><svg class="application-chart" viewBox="0 0 700 340" role="img" aria-labelledby="chart-title chart-desc" xmlns="http://www.w3.org/2000/svg"><title id="chart-title">9월 5일 경기 관람 신청 추이</title><desc id="chart-desc">8월 27일 3명, 28일 2명, 29일 4명, 30일 2명, 9월 2일 5명. 최종 신청은 17명이며 일별 자료에 없는 1명의 신청일은 확인되지 않았다. 홍보 계획상 8월 27일 교내 공유와 구글폼 연결, 8월 29일 감귤즈 콘텐츠 업로드 예정이 기재되어 있다. 인과관계는 미측정.</desc><g aria-hidden="true" fill="none"><path d="M65 34H565 M65 78H565 M65 122H565 M65 166H565 M65 210H565" stroke="#222" stroke-opacity=".12" stroke-width="1"/><path d="M65 24V254H575" stroke="#282828" stroke-width="2"/></g><g font-family="Arial, sans-serif" font-size="15" fill="#555555"><text x="25" y="258">0</text><text x="25" y="214">1</text><text x="25" y="170">2</text><text x="25" y="126">3</text><text x="25" y="82">4</text><text x="25" y="38">5</text></g><path d="M65 122 L190 166 L315 78 L440 166 L565 34 L565 254 L65 254Z" fill="#c8102e18"/><path d="M65 122 L190 166 L315 78 L440 166 L565 34" fill="none" stroke="#c8102e" stroke-width="4.5" stroke-linejoin="round"/><g fill="#c8102e" stroke="white" stroke-width="3"><circle cx="65" cy="122" r="7"/><circle cx="190" cy="166" r="7"/><circle cx="315" cy="78" r="7"/><circle cx="440" cy="166" r="7"/><circle cx="565" cy="34" r="7"/></g><g font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#a80d26" text-anchor="middle"><text x="65" y="105">3</text><text x="190" y="150">2</text><text x="315" y="61">4</text><text x="440" y="150">2</text><text x="565" y="18">5</text></g><g font-family="Arial,sans-serif" font-size="16" fill="#444444" text-anchor="middle"><text x="65" y="281">8/27</text><text x="190" y="281">8/28</text><text x="315" y="281">8/29</text><text x="440" y="281">8/30</text><text x="565" y="281">9/2</text></g><g font-family="Arial,'Malgun Gothic',sans-serif" font-size="16" fill="#111111"><text x="85" y="211" font-weight="600">교내 공유·신청폼 연결</text><text x="85" y="232" fill="#333333" font-size="14">8/27 홍보 계획 기준</text><text x="155" y="28" fill="#202020" font-weight="600">SNS ‘감귤즈’</text><text x="155" y="49" fill="#202020" font-weight="600">단체관람 콘텐츠</text><text x="155" y="69" fill="#444444" font-size="14">8/29 업로드 예정 자료</text></g><text x="586" y="40" font-family="Arial,'Malgun Gothic',sans-serif" font-size="18" fill="#c8102e" font-weight="700">최종 17명</text></svg></div><p class="reconcile-note">&#160;</p><section class="competency"><h3>나의 역량</h3><div class="competency-inner"><div class="competency-donut" role="img" aria-label="담당 역할 기반 추정 투입 비중. 기획 설계 25%, 사용자 접점 35%, 자료 분석 20%, 협업 실행 20%. 실제 시간 기록이 아닌 추정."></div><ul><li><i style="background:#c8102e"></i><b>기획·설계 25%</b><span>프로젝트 계획·회의 구성</span></li><li><i style="background:#ef6b76"></i><b>사용자 접점 35%</b><span>신청폼·QR 설문·콘텐츠</span></li><li><i style="background:#242424"></i><b>자료 분석 20%</b><span>예산·4P 자료조사</span></li><li><i style="background:#8a8a8a"></i><b>협업·실행 20%</b><span>기관 컨택·자금·행사 준비</span></li></ul></div><p class="source-note">&#160;</p></section></div><footer class="spark-footer">SPARK X FC서울 캠퍼스랩<span>PROJECT 01 / 03</span></footer></section>
+<!-- ========== 04 SPARK 결과물: 홍보 사진·스킬·역량·인사이트 ========== -->
+<section class="page spark spark-process" id="spark-process" aria-label="SPARK 활동 결과물 및 인사이트"><div class="spark-collage five-photo-collage"><div class="photo-column photo-column-left"><figure class="photo-poster"><img src="assets/images/spark-content-01.jpg" alt="스파크 2 · SPARK FC서울 홍보 콘텐츠"></figure><figure class="photo-poster"><img src="assets/images/spark-content-02.jpg" alt="스파크 4 · SPARK FC서울 홍보 콘텐츠"></figure></div><div class="photo-column photo-column-right"><figure class="photo-video photo-top"><img src="assets/images/spark-video-01.jpg" alt="홍보영상 1 · SPARK FC서울 홍보 콘텐츠"></figure><figure class="photo-video photo-middle"><img src="assets/images/spark-video-02.jpg" alt="홍보영상 2 · SPARK FC서울 홍보 콘텐츠"></figure><figure class="photo-video photo-bottom"><img src="assets/images/spark-video-03.jpg" alt="홍보영상 3 · SPARK FC서울 홍보 콘텐츠"></figure></div></div><div class="spark-process-copy"><div class="spark-kicker">PROJECT 01 / PROCESS & INSIGHTS</div><h2 class="process-project-title">SPARK X FC서울<br><span>캠퍼스랩</span></h2><div class="process-two-columns"><section class="process-tool-section"><h3>스킬 및 도구</h3><div class="spark-tools"><div class="tool-category"><b>디자인 :</b><span class="tool-names"><span class="named-tool"><svg viewBox="0 0 18 27" aria-hidden="true"><path fill="#f24e1e" d="M4.5 0H9v9H4.5a4.5 4.5 0 0 1 0-9"/><path fill="#ff7262" d="M9 0h4.5a4.5 4.5 0 0 1 0 9H9"/><path fill="#a259ff" d="M4.5 9H9v9H4.5a4.5 4.5 0 0 1 0-9"/><circle fill="#1abcfe" cx="13.5" cy="13.5" r="4.5"/><path fill="#0acf83" d="M4.5 18H9v4.5A4.5 4.5 0 1 1 4.5 18"/></svg>피그마</span><span class="named-tool"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="canva-tool"><stop stop-color="#00c4cc"/><stop offset="1" stop-color="#7d2ae8"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#canva-tool)"/><text x="15.5" y="24" text-anchor="middle" fill="white" font-family="Georgia,serif" font-style="italic" font-size="25">C</text></svg>캔바</span></span></div><div class="tool-category"><b>자료조사 :</b><span class="tool-names"><span class="named-tool"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#10a37f"/><g fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"><path transform="rotate(0 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(60 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(120 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(180 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(240 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(300 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/></g></svg>Chat GPT</span></span></div></div></section><section class="process-deliverables"><h3>다음 기획에 적용할 점</h3><p><b>신청을 망설이는 이유 파악</b><span><strong>가격·일정·동행 여부</strong> <span class="reading-unit">등 참여를 주저하는 이유를</span> <span class="reading-unit">조사해 안내와 관람 제안에 반영하기.</span></span></p><p><b>홍보 채널별 효과 기록</b><span><span class="reading-unit">신청폼에 <strong>유입 경로</strong>를 묻고,</span> <span class="reading-unit"><strong>채널별 신청 인원</strong>을 기록해</span> <span class="reading-unit">다음 홍보의 우선순위 정하기.</span></span></p></section></div><section class="process-insights"><h3>인사이트</h3><article><span>01</span><div><h4>기획의 근거를 찾는 법</h4><p><span class="reading-unit"><strong>신뢰성 있는 자료</strong>를 찾고,</span> <span class="reading-unit"><strong>예산·4P 자료조사</strong>를 통해</span> <span class="reading-unit">기획을 뒷받침할 근거를 정리했습니다.</span></p></div></article><article><span>02</span><div><h4>관심을 신청으로 연결하는 법</h4><p><span class="reading-unit"><strong>신청폼 질문</strong>에 대한 이해와</span> <span class="reading-unit"><strong>축구 팬덤·문화</strong>의 이해를 넓히며,</span> <span class="reading-unit">관람 참여를 유도하는 <strong>모객 기획</strong>을 경험했습니다.</span></p></div></article><article><span>03</span><div><h4>다른 기획에서 가능성을 발견하는 법</h4><p><span class="reading-unit"><strong>경쟁 PT</strong>에서 다른 대학의 기획안을 접하며</span> <span class="reading-unit"><strong>휴면 팬</strong>과 <strong>경기장 주변 풋살장</strong>을 활용한</span> <span class="reading-unit">관람 활성화 가능성을 배웠습니다.</span></p></div></article></section></div><footer class="spark-footer">SPARK × FC SEOUL<span>PROJECT 01 / 04</span></footer></section>
+
+<!-- ========== 05 Design Thinking: 앱 화면·역할·도구·역량 ========== -->
+<section class="page dt-project" id="entrance-app-process" aria-label="Design Thinking 프로젝트 체대입시 관리 앱">
+<div class="dt-left"><div class="dt-kicker">PROJECT 02 / #콘텐츠기획</div><h2>Design Thinking<br><span>프로젝트</span></h2><section class="dt-description"><h3>프로젝트 설명</h3><p>체대입시학원의 출결·보강·성장 관리를 통합한<br>학생·학부모·관리자용 앱 프로토타입을 기획·제작했습니다.</p></section><section class="dt-role"><h3>나의 역할</h3><p>아이디어 기획 · 핵심 기능 설계<br>프로토타입 제작</p></section><section class="dt-insight"><h3>인사이트</h3><ol class="dt-insight-list"><li><h4>현장의 불편을 기획으로 연결하는 법</h4><p>출결·보강·공지 관리에서 겪은 불편을 관찰하고,<br><strong>반복 업무와 누락을 줄이기 위한 기능</strong>으로 구체화했습니다.</p></li><li><h4>사용자마다 필요한 정보를 구분하는 법</h4><p>학생·학부모·관리자의 이용 목적을 고려하며,<br><strong>사용자별 화면과 정보의 우선순위</strong>를 설계하는 경험을 쌓았습니다.</p></li><li><h4>아이디어를 화면으로 만들고 반응을 확인하는 법</h4><p>프로토타입을 실제 학원 학생들에게 보여주고 의견을 들으며,<br><strong>기획자의 예상과 사용자의 반응을 비교하는 과정</strong>의 중요성을 배웠습니다.</p></li></ol></section></div>
+<div class="dt-reference-image dt-learning"><section class="dt-learning-tools"><h3>스킬 및 도구</h3><div class="spark-tools"><div class="tool-category"><b>디자인:</b><span class="tool-names"><span class="named-tool"><svg viewBox="0 0 18 27" aria-hidden="true"><path fill="#f24e1e" d="M4.5 0H9v9H4.5a4.5 4.5 0 0 1 0-9"/><path fill="#ff7262" d="M9 0h4.5a4.5 4.5 0 0 1 0 9H9"/><path fill="#a259ff" d="M4.5 9H9v9H4.5a4.5 4.5 0 0 1 0-9"/><circle fill="#1abcfe" cx="13.5" cy="13.5" r="4.5"/><path fill="#0acf83" d="M4.5 18H9v4.5A4.5 4.5 0 1 1 4.5 18"/></svg>피그마</span><span class="named-tool"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="dt-canva-tool"><stop stop-color="#00c4cc"/><stop offset="1" stop-color="#7d2ae8"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#dt-canva-tool)"/><text x="15.5" y="24" text-anchor="middle" fill="white" font-family="Georgia,serif" font-style="italic" font-size="25">C</text></svg>캔바</span></span></div><div class="tool-category"><b>코딩:</b><span class="tool-names"><span class="named-tool"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#10a37f"/><g fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"><path transform="rotate(0 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(60 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(120 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(180 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(240 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/><path transform="rotate(300 16 16)" d="M16 6.5c4.3-2.5 9.5.6 9.5 5.5v7l-9.5 5.5-5-2.9V11.1L16 8.2l7 4.1"/></g></svg>Chat GPT</span></span></div></div></section><section class="dt-learning-insights"><h3>다음 기획에 적용할 점</h3><h4>사용자별 필요한 정보 구분</h4><p>학생·학부모·관리자의 이용 목적에 맞춰<br>첫 화면과 정보의 우선순위 정하기.</p><h4>실제 사용 과정으로 개선점 찾기</h4><p>출결·보강 신청을 직접 수행하게 하고,<br>막히는 단계와 의견을 기록해 개선하기.</p></section></div>
+<section class="dt-competency"><h3>나의 역량</h3><div class="dt-donut" role="img" aria-label="담당 업무에 따른 추정 비중: 문제 정의 25%, 기능 설계 30%, 프로토타입 제작 35%, 사용자 피드백 10%"></div><ul><li><i style="background:#168fd3"></i><b>문제 정의 25%</b><span>현장 불편 관찰·기존 앱 탐색</span></li><li><i style="background:#68bbdf"></i><b>기능 설계 30%</b><span>사용자 구분·출결·성장 관리</span></li><li><i style="background:#879daf"></i><b>프로토타입 제작 35%</b><span>화면 구성·사용 흐름 구현</span></li><li><i style="background:#b8d9e8"></i><b>사용자 피드백 10%</b><span>학원 학생 대상 반응 확인</span></li></ul></section>
+<div class="dt-screens-label">실제 <span class="dt-app-anchor">앱</span> 화면</div>
+<div class="dt-screens" aria-label="체대입시앱 화면 4장"><figure class="dt-iphone" aria-label="iPhone 17 Pro 앱 화면 목업"><div class="dt-phone-screen"><div class="dt-phone-status" aria-hidden="true"><span>9:41</span><i></i><b>▰</b></div><img src="assets/images/app-login.png" alt="체대입시앱 4 · 사용자 유형별 로그인"></div></figure><figure class="dt-iphone" aria-label="iPhone 17 Pro 앱 화면 목업"><div class="dt-phone-screen"><div class="dt-phone-status" aria-hidden="true"><span>9:41</span><i></i><b>▰</b></div><img src="assets/images/app-student.png" alt="체대입시앱 1 · 학생 대시보드"></div></figure><figure class="dt-iphone" aria-label="iPhone 17 Pro 앱 화면 목업"><div class="dt-phone-screen"><div class="dt-phone-status" aria-hidden="true"><span>9:41</span><i></i><b>▰</b></div><img src="assets/images/app-admin.png" alt="체대입시앱 2 · 관리자 대시보드"></div></figure><figure class="dt-iphone" aria-label="iPhone 17 Pro 앱 화면 목업"><div class="dt-phone-screen"><div class="dt-phone-status" aria-hidden="true"><span>9:41</span><i></i><b>▰</b></div><img src="assets/images/app-parent.png" alt="체대입시앱 3 · 학부모 대시보드"></div></figure></div>
+<footer class="dt-footer">DESIGN THINKING / 체대입시 관리 앱<span>PROJECT 02</span></footer></section>
+
+<!-- ========== 06 역량 요약: 강점·역량 항목·관련 활동 목록 ========== -->
+<section class="page competencies-summary" id="competencies-summary" aria-label="나의 역량 요약">
+<header class="cs-header" data-animate="heading"><h2>MY COMPETENCIES</h2><span aria-hidden="true">////</span></header>
+<div class="cs-grid"><section class="cs-strengths"><h3>MY STRENGTHS</h3><article class="cs-strength" id="strength-observe" data-animate="strength"><span class="cs-number">01</span><span class="cs-icon"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="27" cy="27" r="18"/><path d="m40 40 20 20M17 23q2-8 10-9"/></svg></span><div><span>세심한</span><h4>관찰력</h4></div></article><article class="cs-strength" id="strength-execute" data-animate="strength"><span class="cs-number">02</span><span class="cs-icon"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 45c-14-18 13-34 25-18 7 10-3 16-5 22H25M25 55h18M28 61h12M34 8V2M15 15l-5-5M54 15l5-5M9 32H2M59 32h7"/></svg></span><div><span>꾸준한</span><h4>실행력</h4></div></article><article class="cs-strength" id="strength-communicate" data-animate="strength"><span class="cs-number">03</span><span class="cs-icon"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="34" cy="20" r="10"/><circle cx="12" cy="27" r="7"/><circle cx="56" cy="27" r="7"/><path d="M19 62V48c0-18 30-18 30 0v14ZM2 61V49q0-13 12-12M54 37q12-1 12 12v12H54M2 61h12"/></svg></span><div><span>배려형</span><h4>소통력</h4></div></article></section><section class="cs-skills" aria-label="13개 활동 중 역량별 해당 활동 수"><article class="cs-skill" id="competency-1" data-animate="skill" data-value="10" data-total="13"><h4>기획력 <span>/ Planning</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="기획력: 13개 활동 중 10개"><span class="cs-fill" style="--value:76.92308%"></span></div><p><b>10</b><span> / 13</span></p></div></article><article class="cs-skill" id="competency-2" data-animate="skill" data-value="10" data-total="13"><h4>실행력 <span>/ Execution</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="실행력: 13개 활동 중 10개"><span class="cs-fill" style="--value:76.92308%"></span></div><p><b>10</b><span> / 13</span></p></div></article><article class="cs-skill" id="competency-3" data-animate="skill" data-value="8" data-total="13"><h4>커뮤니케이션 <span>/ Communication</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="커뮤니케이션: 13개 활동 중 8개"><span class="cs-fill" style="--value:61.53846%"></span></div><p><b>8</b><span> / 13</span></p></div></article><article class="cs-skill" id="competency-4" data-animate="skill" data-value="8" data-total="13"><h4>협업력 <span>/ Collaboration</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="협업력: 13개 활동 중 8개"><span class="cs-fill" style="--value:61.53846%"></span></div><p><b>8</b><span> / 13</span></p></div></article><article class="cs-skill" id="competency-5" data-animate="skill" data-value="6" data-total="13"><h4>문제해결력 <span>/ Problem Solving</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="문제해결력: 13개 활동 중 6개"><span class="cs-fill" style="--value:46.15385%"></span></div><p><b>6</b><span> / 13</span></p></div></article><article class="cs-skill" id="competency-6" data-animate="skill" data-value="5" data-total="13"><h4>분석력 <span>/ Analytical Thinking</span></h4><div class="cs-meter-row"><div class="cs-track" role="img" aria-label="분석력: 13개 활동 중 5개"><span class="cs-fill" style="--value:38.46154%"></span></div><p><b>5</b><span> / 13</span></p></div></article></section><section class="cs-projects"><h3 class="cs-activity-title">ACTIVITY LIST</h3><div class="cs-activity-layout-fixed"><ol class="cs-activity-list-fixed"><li data-animate="activity" style="--order:1">FC서울 캠퍼스랩</li><li data-animate="activity" style="--order:2">디자인씽킹 프로젝트</li><li data-animate="activity" style="--order:3">SKTHON 프로젝트</li><li data-animate="activity" style="--order:4">상월곡 튼튼체력장 기획</li><li data-animate="activity" style="--order:5">서울임팩트프로젝트</li><li data-animate="activity" style="--order:6">휘트니스피플 이수점 트레이너</li><li data-animate="activity" style="--order:7">창의산학교육원 서포터즈</li><li data-animate="activity" style="--order:8">체대입시학원 메인강사</li><li data-animate="activity" style="--order:9">moty V 모드별 효과 비교 연구</li><li data-animate="activity" style="--order:10">캡스톤디자인대회</li><li data-animate="activity" style="--order:11">무릎인대 동아리 발표</li><li data-animate="activity" style="--order:12">퍼포먼스캡처 아이디어 기획</li><li data-animate="activity" style="--order:13">충청 유니버사이드 디자인대회</li></ol></div></section></div><section class="cs-relocated-chart" aria-label="프로젝트 분야별 구성"><h3>PROJECTS &amp; EXPERIENCES</h3><div class="cs-chart" aria-label="13개 프로젝트 및 경험: 스포츠, 기획, 리서치, 기술 분야"><svg class="cs-ring" viewBox="0 0 200 200" aria-hidden="true"><path id="sector-planning" data-animate="sector" d="M100 0 A100 100 0 0 1 200 100 L153 100 A53 53 0 0 0 100 47Z" fill="#169edf" stroke="#fff" stroke-width=".5"/><path id="sector-technology" data-animate="sector" d="M200 100 A100 100 0 0 1 100 200 L100 153 A53 53 0 0 0 153 100Z" fill="#a8d9f3" stroke="#fff" stroke-width=".5"/><path id="sector-research" data-animate="sector" d="M100 200 A100 100 0 0 1 0 100 L47 100 A53 53 0 0 0 100 153Z" fill="#9bb1c0" stroke="#fff" stroke-width=".5"/><path id="sector-sports" data-animate="sector" d="M0 100 A100 100 0 0 1 100 0 L100 47 A53 53 0 0 0 47 100Z" fill="#c2e7f9" stroke="#fff" stroke-width=".5"/></svg><div class="cs-chart-center" data-animate="count"><strong>13</strong><span>PROJECTS &amp;<br>EXPERIENCES</span></div><div class="cs-chart-label cs-sports" data-animate="chart-label"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="44" cy="10" r="5"/><path d="m20 22 11-9 10 9 8 4 7-6M36 19 25 36 10 33 4 27M25 36l16 9 1 16M25 36 14 57"/></svg><span>SPORTS</span></div><div class="cs-chart-label cs-planning" data-animate="chart-label"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="18" y="5" width="33" height="54" rx="3"/><path d="M25 18h18M25 26h18M25 34h18M25 42h10"/></svg><span>PLANNING</span></div><div class="cs-chart-label cs-research" data-animate="chart-label"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 60h55M14 60V42h7v18M30 60V29h7v31M46 60V13h7v47"/></svg><span>RESEARCH</span></div><div class="cs-chart-label cs-technology" data-animate="chart-label"><svg viewBox="0 0 68 68" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14h44v34H12ZM8 55h53l-5-7H12Z"/></svg><span>TECHNOLOGY</span></div></div></section></section>
+
+<!-- ========== 07 명함: THANK YOU·슬로건·전화번호·이메일 ========== -->
+<section class="page contact-finale" id="contact" aria-label="마지막 인사 및 연락처">
+<div class="finale-content" data-animate="contact"><p class="finale-kicker">PARK CHAE WON · PORTFOLIO</p><h2 data-animate="heading">THANK YOU</h2><p class="finale-slogan"><strong>WHY</strong>에서 시작해, <strong>HOW</strong>로 증명합니다</p><p class="finale-name">박채원</p><div class="finale-contacts"><div><span>PHONE</span><a class="finale-phone" data-contact="phone" href="tel:01057203103">010-5720-3103</a></div><div><span>EMAIL</span><a href="mailto:won707105@skuniv.ac.kr">won707105@skuniv.ac.kr</a></div></div></div><div class="finale-foot">SPORTS · DATA · TECHNOLOGY</div>
+</section>
+</main>
+
+<!-- JavaScript 1: 메뉴 이동: 현재 선택된 메뉴 표시 -->
+<script>
+// 메뉴 이동: 현재 선택된 메뉴 표시
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(n=>n.removeAttribute('aria-current'));const n=document.querySelector('nav a[href="'+a.getAttribute('href')+'"]');if(n)n.setAttribute('aria-current','page')}));
+</script>
+
+<!-- JavaScript 2: Design Thinking: 인사이트와 역량 설명의 높이 정렬 -->
+<script>
+// Design Thinking: 인사이트와 역량 설명의 높이 정렬
+
+(function(){
+ const page=document.getElementById('entrance-app-process');
+ if(!page)return;
+ const group=page.querySelector('.dt-learning');
+ const source=page.querySelector('.dt-learning-insights p:last-child');
+ const target=page.querySelector('.dt-competency li:last-child span');
+ if(!group||!source||!target)return;
+ function lastLineBottom(el){
+   const range=document.createRange();range.selectNodeContents(el);
+   const rects=Array.from(range.getClientRects()).filter(r=>r.height>0&&r.width>0);
+   return rects.length?rects[rects.length-1].bottom:el.getBoundingClientRect().bottom;
+ }
+ function align(){
+   if(window.innerWidth<=760){group.style.removeProperty('top');return;}
+   const delta=lastLineBottom(target)-lastLineBottom(source);
+   if(Math.abs(delta)>.1)group.style.top=(parseFloat(getComputedStyle(group).top)+delta)+'px';
+ }
+ let queued=false;
+ function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;align();});}
+ window.addEventListener('load',schedule);
+ window.addEventListener('resize',schedule);
+ window.addEventListener('beforeprint',align);
+ if(document.fonts)document.fonts.ready.then(schedule);
+ if(window.ResizeObserver)new ResizeObserver(schedule).observe(page);
+ schedule();
+})();
+
+</script>
+
+
+
+
+<!-- JavaScript 3: 인터랙션: 신청 그래프 설명·프로젝트 역량 확대·관련 활동 강조 -->
+<script>
+// 인터랙션: 신청 그래프 설명·프로젝트 역량 확대·관련 활동 강조
+
+(()=>{
+'use strict';
+const tip=document.createElement('div');tip.className='portfolio-tooltip';tip.id='portfolio-interaction-tip';tip.role='tooltip';tip.hidden=true;document.body.append(tip);
+function showTip(el,content){tip.textContent=content;tip.hidden=false;el.setAttribute('aria-describedby',tip.id);const r=el.getBoundingClientRect();const w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px';tip.style.top=(r.top>h+18?r.top-h-10:Math.min(r.bottom+10,innerHeight-h-8))+'px';}
+function hideTip(){tip.hidden=true;document.querySelectorAll('[aria-describedby="'+tip.id+'"]').forEach(e=>e.removeAttribute('aria-describedby'));}
+function events(el,on,off){el.addEventListener('mouseenter',on);el.addEventListener('mouseleave',off);el.addEventListener('focus',on);el.addEventListener('blur',off);el.addEventListener('click',()=>{if(el.dataset.open==='1'){delete el.dataset.open;off();}else{el.dataset.open='1';on();}});el.addEventListener('keydown',e=>{if(e.key==='Escape'){off();el.blur();}if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});}
+// 신청 그래프에 표시할 날짜별 안내 문구
+const dates=['8/27 · 신청 3명\n교내 공유·신청폼 연결이 홍보 계획에 기록되어 있습니다.','8/28 · 신청 2명\n해당 날짜의 추가 홍보 활동은 자료에 기록되어 있지 않습니다.','8/29 · 신청 4명\nSNS ‘감귤즈’ 단체관람 콘텐츠 업로드 예정일입니다.','8/30 · 신청 2명\n해당 날짜의 추가 홍보 활동은 자료에 기록되어 있지 않습니다.','9/2 · 신청 5명'];
+// SPARK 신청 그래프의 숫자와 점에 마우스·키보드 이벤트 연결
+const chart=document.querySelector('#spark .application-chart');
+if(chart){const group=[...chart.querySelectorAll('g')].find(g=>g.getAttribute('font-size')==='20');if(group)[...group.querySelectorAll('text')].forEach((el,i)=>{el.classList.add('chart-hover-target');el.setAttribute('tabindex','0');el.setAttribute('aria-label',dates[i]);events(el,()=>showTip(el,dates[i]),hideTip);});const dots=chart.querySelectorAll('circle');dots.forEach((el,i)=>{if(i<dates.length){el.classList.add('chart-hover-target');el.setAttribute('tabindex','0');events(el,()=>showTip(el,dates[i]),hideTip);}});}
+const ns='http://www.w3.org/2000/svg';
+function makeDonut(selector,values,colors,inner){const box=document.querySelector(selector);if(!box)return;const section=box.closest('section');const rows=[...section.querySelectorAll('li')];box.classList.add('project-interactive-donut');box.setAttribute('role','group');const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','-10 -10 220 220');const paths=[];let angle=-Math.PI/2;
+function point(r,a){return [100+r*Math.cos(a),100+r*Math.sin(a)];}
+values.forEach((v,i)=>{const end=angle+v/100*Math.PI*2;const a=point(100,angle),b=point(100,end),c=point(inner,end),d=point(inner,angle);const path=document.createElementNS(ns,'path');path.setAttribute('d',`M${a} A100 100 0 ${v>50?1:0} 1 ${b} L${c} A${inner} ${inner} 0 ${v>50?1:0} 0 ${d} Z`);path.setAttribute('fill',colors[i]);path.setAttribute('tabindex','0');path.setAttribute('role','button');path.setAttribute('aria-label',rows[i].textContent);svg.append(path);paths.push(path);angle=end;});box.replaceChildren(svg);
+function clear(){paths.forEach(p=>p.classList.remove('segment-active','segment-muted'));rows.forEach(r=>r.classList.remove('segment-active'));hideTip();}
+function active(i){paths.forEach((p,j)=>{p.classList.toggle('segment-active',i===j);p.classList.toggle('segment-muted',i!==j);});rows.forEach((r,j)=>r.classList.toggle('segment-active',i===j));hideTip();}
+paths.forEach((p,i)=>events(p,()=>active(i),clear));rows.forEach((r,i)=>{r.tabIndex=0;r.setAttribute('role','button');events(r,()=>active(i),clear);});}
+makeDonut('#spark .competency-donut',[25,35,20,20],['#c8102e','#ef6b76','#242424','#8a8a8a'],19);
+makeDonut('#entrance-app-process .dt-donut',[25,30,35,10],['#168fd3','#68bbdf','#879daf','#b8d9e8'],24);
+// Activity associations are qualitative links based on the supplied activity descriptions.
+const evidence=[[1,2,3,4,5,7,8,10,12,13],[1,2,3,4,5,6,7,8,9,11],[1,2,4,5,6,7,8,11],[1,3,4,5,7,9,10,13],[1,2,3,8,10,12],[1,2,4,9,11]];
+const summary=document.getElementById('competencies-summary');if(summary){const skills=[...summary.querySelectorAll('.cs-skill')],items=[...summary.querySelectorAll('.cs-activity-list-fixed li')];function reset(){skills.forEach(s=>s.classList.remove('evidence-active'));items.forEach(i=>i.classList.remove('evidence-match','evidence-muted'));}skills.forEach((skill,k)=>{skill.tabIndex=0;skill.setAttribute('role','button');skill.dataset.evidence=evidence[k].join(',');skill.setAttribute('aria-label',skill.querySelector('h4').innerText+' 관련 활동 '+evidence[k].join(', ')+'번 강조');events(skill,()=>{reset();skill.classList.add('evidence-active');items.forEach((li,i)=>{const yes=evidence[k].includes(i+1);li.classList.toggle('evidence-match',yes);li.classList.toggle('evidence-muted',!yes);});},reset);});}
+window.addEventListener('beforeprint',()=>{hideTip();document.querySelectorAll('.segment-active,.segment-muted,.evidence-active,.evidence-match,.evidence-muted').forEach(e=>e.classList.remove('segment-active','segment-muted','evidence-active','evidence-match','evidence-muted'));});window.addEventListener('scroll',hideTip,{passive:true});
+})();
+
+</script>
+
+<!-- JavaScript 4: 경력 정렬: CERTIFICATE↔SKILLS, 이름↔학점 위치 맞추기 -->
+<script>
+// 경력 정렬: CERTIFICATE↔SKILLS, 이름↔학점 위치 맞추기
+
+(()=>{
+const profile=document.getElementById('profile');if(!profile)return;
+const blocks=[...profile.querySelectorAll('.editorial-block')];
+const certificate=blocks.find(b=>b.querySelector('h3')?.textContent.trim()==='CERTIFICATE');
+const skills=blocks.find(b=>b.querySelector('h3')?.textContent.trim()==='SKILLS');
+const name=profile.querySelector('.editorial-person h1');const grade=profile.querySelector('.grade');
+let pending=false;
+function align(){
+ if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;
+ if(!certificate||!skills||!name||!grade)return;
+ certificate.style.marginTop='';name.style.marginTop='';
+ if(!matchMedia('print').matches&&innerWidth<=760)return;
+ const certDelta=skills.querySelector('h3').getBoundingClientRect().top-certificate.querySelector('h3').getBoundingClientRect().top;
+ certificate.style.marginTop=Math.max(0,certDelta)+'px';
+ const original=parseFloat(getComputedStyle(name).marginTop)||0;
+ const nameDelta=grade.getBoundingClientRect().bottom-name.getBoundingClientRect().bottom;
+ name.style.marginTop=(original+Math.max(0,nameDelta))+'px';
+ });
+}
+window.addEventListener('load',align);window.addEventListener('resize',align);window.addEventListener('beforeprint',align);window.addEventListener('afterprint',align);if(document.fonts)document.fonts.ready.then(align);align();
+})();
+
+</script>
+</body></html>
